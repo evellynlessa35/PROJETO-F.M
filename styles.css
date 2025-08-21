@@ -29,9 +29,7 @@ section {
 }
 
 .inicio-fundo {
-    /* aula 3 */
     background-image: url('capaFM.png');
-    /* Substitua pelo caminho da sua imagem */
     background-size: cover;
     background-position: right;
     border-radius: 80px;
@@ -40,8 +38,6 @@ section {
     padding: 40px;
     margin: 0 auto;
 }
-
-/* posicionamento para a imagem à direita */
 .img-inicio {
     position: absolute;
     right: 0;
@@ -74,7 +70,7 @@ section {
 }
 
 
-#FreddieMecury{
+#FreddieMercury{
     position: relative;
     padding-top: 5rem;
     margin-top: 3rem;
