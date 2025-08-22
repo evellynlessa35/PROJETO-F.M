@@ -1,4 +1,4 @@
-# Site acessível sobre o Freddie MErcury
+# Site acessível sobre o Freddie Mercury 
 # Sobre
 Refatoração de um site implementando recursos de acessibilidade no html, css e JS.
 ## Recursos de acessibilidade
