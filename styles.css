@@ -1,4 +1,4 @@
-5@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
 
 :root {
@@ -29,7 +29,7 @@ section {
 }
 
 .inicio-fundo {
-    background-image: url('capaFM.png');
+    background-image: url('img/capaFM.png');
     background-size: cover;
     background-position: right;
     border-radius: 80px;
@@ -38,6 +38,7 @@ section {
     padding: 40px;
     margin: 0 auto;
 }
+
 .img-inicio {
     position: absolute;
     right: 0;
@@ -70,13 +71,13 @@ section {
 }
 
 
-#FreddieMercury{
+#FreddieMercury {
     position: relative;
     padding-top: 5rem;
     margin-top: 3rem;
     margin-bottom: 3rem;
-    background: url('coroaFM.png') top right no-repeat,
-        url('discoFM1.png') bottom left no-repeat;
+    background: url('img/coroaFM.png') top right no-repeat,
+        url('img/discoFM1.png') bottom left no-repeat;
     background-size: 180px 180px;
 }
 
@@ -102,19 +103,19 @@ h2 {
 }
 
 .fundo-galeria {
-    background: url('discoFM.png') bottom right no-repeat;
+    background: url('img/discoFM.png') bottom right no-repeat;
     background-size: 180px 180px;
 }
 
 #contato {
-    background-image: url('capaFM.png');
+    background-image: url('img/capaFM.png');
     background-size: cover;
     padding: 4rem 0;
 
 }
 
 .formulario {
-    background-color: #ffe8c1;
+    background-color: #ffe8d1;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -128,7 +129,7 @@ h2 {
 }
 
 .form-control {
-    background-color: #F1EDEF;
+    background-color: #c7bbab;
 }
 .menu-acessibilidade{
     position: fixed;
@@ -187,4 +188,4 @@ h2 {
 }
 .alto-contraste .fundo-galeria {
     background: none;
-}
+    }
