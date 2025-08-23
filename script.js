@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
     aumentaFonteBotao.addEventListener('click', function() {
         tamanhoAtualFonte += 0.1;
         document.body.style.fontSize = `${tamanhoAtualFonte}rem`;
-
         elementosExtras.forEach(el => {
             let tamanhoAtual = parseFloat(window.getComputedStyle(el).fontSize);
             el.style.fontSize = `${tamanhoAtual + 1}px`;
@@ -30,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
     diminuiFonteBotao.addEventListener('click', function() {
         tamanhoAtualFonte -= 0.1;
         document.body.style.fontSize = `${tamanhoAtualFonte}rem`;
-
         elementosExtras.forEach(el => {
             let tamanhoAtual = parseFloat(window.getComputedStyle(el).fontSize);
             el.style.fontSize = `${tamanhoAtual - 1}px`;
@@ -44,9 +42,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // -------- LEITOR DE TELA ---------
     let fala;
     let lendo = false;
-    let index = 0;
-    let spans;
+    const main = document.querySelector('main');
+    let textoOriginal = main.innerHTML;
 
+    // Botões de leitura
     const botaoLer = document.createElement('button');
     botaoLer.textContent = '▶ Ler página';
     botaoLer.classList.add('btn', 'btn-primary', 'fw-bold');
@@ -66,14 +65,14 @@ document.addEventListener('DOMContentLoaded', function() {
     seletorVelocidade.title = "Velocidade da leitura";
     opcoesDeAcessibilidade.appendChild(seletorVelocidade);
 
-    const main = document.querySelector('main');
-    let textoOriginal = main.innerHTML;
+    let spans, index;
 
     function iniciarLeitura() {
         if (window.speechSynthesis.speaking) {
             window.speechSynthesis.cancel();
+            main.innerHTML = textoOriginal;
         }
-        main.innerHTML = textoOriginal;
+
         const textoParaLer = main.innerText;
         const palavras = textoParaLer.split(/\s+/);
         main.innerHTML = palavras.map(p => `<span class="leitura-palavra">${p}</span>`).join(" ");
@@ -81,15 +80,14 @@ document.addEventListener('DOMContentLoaded', function() {
         index = 0;
 
         fala = new SpeechSynthesisUtterance(textoParaLer);
-        fala.rate = parseFloat(seletorVelocidade.value);
+        fala.rate = seletorVelocidade.value;
         fala.pitch = 1;
 
         fala.onboundary = function(event) {
-            if (event.name === "word" || event.charIndex !== undefined) {
-                let pos = event.charIndex;
-                let i = textoParaLer.slice(0, pos).split(/\s+/).length - 1;
+            if (event.charIndex !== undefined && index < spans.length) {
                 spans.forEach(s => s.style.background = "");
-                if (spans[i]) spans[i].style.background = "yellow";
+                spans[index].style.background = "yellow";
+                index++;
             }
         };
 
@@ -114,9 +112,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     seletorVelocidade.addEventListener('input', () => {
-        if (lendo) {
-            // reinicia leitura com nova velocidade
-            iniciarLeitura();
+        if (fala) {
+            alert("Velocidade só vai aplicar na próxima leitura.");
         }
     });
 });
