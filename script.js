@@ -42,49 +42,46 @@ ScrollReveal().reveal('#galeria', { delay: 500 });
 ScrollReveal().reveal('#contato', { delay: 500 });
 
 
-const galeria = document.querySelector('#galeria');
-const emojis = ['⭐','🎵','✨','🎶'];
+document.querySelectorAll('.imagem-container').forEach(container => {
+    const emojis = ['⭐','🎵','✨','🎶'];
+    const numEmojis = 5;
 
-window.addEventListener('load', () => {
-    document.querySelectorAll('.imagem-container').forEach(container => {
-        const numEmojis = 5;
-        const { width, height } = container.getBoundingClientRect();
+    const { width, height } = container.getBoundingClientRect();
 
-        for (let i = 0; i < numEmojis; i++) {
-            const span = document.createElement('span');
-            span.classList.add('particle');
-            span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    for (let i = 0; i < numEmojis; i++) {
+        const span = document.createElement('span');
+        span.classList.add('particle');
+        span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
 
-            
-            span.style.top = Math.random() * height + 'px';
-            span.style.left = Math.random() * width + 'px';
+        container.appendChild(span);
 
-            container.appendChild(span);
+        
+        span.style.top = Math.random() * height + 'px';
+        span.style.left = Math.random() * width + 'px';
 
-            
-            const speedX = (Math.random() - 0.5) * 2;
-            const speedY = (Math.random() - 0.5) * 2;
+        
+        const speedX = (Math.random() - 0.5) * 2;
+        const speedY = (Math.random() - 0.5) * 2;
 
-            function move() {
-                let top = parseFloat(span.style.top);
-                let left = parseFloat(span.style.left);
+        function move() {
+            let top = parseFloat(span.style.top);
+            let left = parseFloat(span.style.left);
 
-                top += speedY;
-                left += speedX;
+            top += speedY;
+            left += speedX;
 
-               
-                if (top < 0) top = 0;
-                if (top > height - 20) top = height - 20;
-                if (left < 0) left = 0;
-                if (left > width - 20) left = width - 20;
+           
+            if (top < 0) top = 0;
+            if (top > height - 20) top = height - 20;
+            if (left < 0) left = 0;
+            if (left > width - 20) left = width - 20;
 
-                span.style.top = top + 'px';
-                span.style.left = left + 'px';
+            span.style.top = top + 'px';
+            span.style.left = left + 'px';
 
-                requestAnimationFrame(move);
-            }
-
-            move();
+            requestAnimationFrame(move);
         }
-    });
+
+        move();
+    }
 });
