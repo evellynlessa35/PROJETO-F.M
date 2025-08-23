@@ -1,4 +1,4 @@
-um um@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
 
 :root {
@@ -10,7 +10,7 @@ um um@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@
 
 body {
     font-size: 1rem;
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', sans-serif;
 }
 
 header {
@@ -117,6 +117,33 @@ section {
     box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
 }
 
+.citacao-estrela {
+    position: relative;
+    display: inline-block;
+    padding: 2rem 3rem;
+    font-family: 'Georgia', serif;
+    font-size: 1.5rem;
+    color: var(--vinho-escuro);
+    text-align: center;
+    margin: 2rem auto;
+}
+
+.citacao-estrela::before {
+    content: "★";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(7);
+    color: #ffe600;
+    z-index: 0;
+    opacity: 0.2;
+}
+
+.citacao-estrela blockquote {
+    position: relative;
+    z-index: 1;
+}
+
 .video-freddie h3 {
     font-family: 'Lemon', cursive;
     font-size: 1.8rem;
@@ -151,11 +178,35 @@ h2 {
 
 #galeria {
     background-color: #c7bbab;
+    position: relative;
+    overflow: hidden;
+    padding: 3rem 0;
 }
 
 .fundo-galeria {
     background: url('img/discoFM.png') bottom right no-repeat;
     background-size: 180px 180px;
+}
+
+.imagem-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+
+.imagem-container img {
+    display: block;
+    width: 100%;
+    border-radius: 15px;
+}
+
+.imagem-container .particle {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    font-size: 1.5rem;
+    opacity: 0.8;
+    z-index: 2;
 }
 
 #contato {
@@ -231,43 +282,10 @@ h2 {
     color: var(--alto-contraste-fundo)
 }
 
-.alto-contraste #FreddieMercury {
+.alto-contraste #FreddieMercury,
+.alto-contraste #galeria,
+.alto-contraste .fundo-galeria{
     background: none;
-}
-
-.alto-contraste #galeria {
-    background-color: var(--alto-contraste-fundo);
-}
-
-.alto-contraste .fundo-galeria {
-    background: none;
-}
-
-.citacao-estrela {
-    position: relative;
-    display: inline-block;
-    padding: 2rem 3rem;
-    font-family: 'Georgia', serif;
-    font-size: 1.5rem;
-    color: var(--vinho-escuro);
-    text-align: center;
-    margin: 2rem auto;
-}
-
-.citacao-estrela::before {
-    content: "★";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(7);
-    color: #ffe600;
-    z-index: 0;
-    opacity: 0.2;
-}
-
-.citacao-estrela blockquote {
-    position: relative;
-    z-index: 1;
 }
 
 .figcaption {
@@ -276,31 +294,4 @@ h2 {
     color: var(--vinho-escuro);
     text-align: center;
     margin-top: 0.5rem;
-}
-#galeria {
-    background-color: #c7bbab;
-    position: relative;
-    overflow: hidden;
-    padding: 3rem 0;
-}
-
-.imagem-container {
-    position: relative;
-    display: inline-block;
-    margin-bottom: 2rem;
-}
-
-.imagem-container img {
-    display: block;
-    width: 100%;
-    border-radius: 15px;
-}
-
-.imagem-container .particle {
-    position: absolute;
-    pointer-events: none;
-    user-select: none;
-    font-size: 1.5rem;
-    opacity: 0.8;
-    z-index: 2;
     }
