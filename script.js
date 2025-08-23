@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
     aumentaFonteBotao.addEventListener('click', function() {
         tamanhoAtualFonte += 0.1;
         document.body.style.fontSize = `${tamanhoAtualFonte}rem`;
-
         elementosExtras.forEach(el => {
             let tamanhoAtual = parseFloat(window.getComputedStyle(el).fontSize);
             el.style.fontSize = `${tamanhoAtual + 1}px`;
@@ -30,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
     diminuiFonteBotao.addEventListener('click', function() {
         tamanhoAtualFonte -= 0.1;
         document.body.style.fontSize = `${tamanhoAtualFonte}rem`;
-
         elementosExtras.forEach(el => {
             let tamanhoAtual = parseFloat(window.getComputedStyle(el).fontSize);
             el.style.fontSize = `${tamanhoAtual - 1}px`;
@@ -65,42 +63,54 @@ document.addEventListener('DOMContentLoaded', function() {
     opcoesDeAcessibilidade.appendChild(seletorVelocidade);
 
     const main = document.querySelector('main');
-    let textoOriginal = main.innerHTML;
+    const textoParaLer = main.innerText;
 
     botaoLer.addEventListener('click', () => {
+        // cancela leitura atual
         if (window.speechSynthesis.speaking) {
             window.speechSynthesis.cancel();
-            main.innerHTML = textoOriginal; // restaura texto normal
         }
-
-        const textoParaLer = main.innerText;
-        const palavras = textoParaLer.split(/\s+/);
-
-        // recria conteúdo em spans
-        main.innerHTML = palavras.map(p => `<span class="leitura-palavra">${p}</span>`).join(" ");
-
-        const spans = main.querySelectorAll("span.leitura-palavra");
 
         fala = new SpeechSynthesisUtterance(textoParaLer);
         fala.rate = seletorVelocidade.value;
         fala.pitch = 1;
 
-        // destacar palavra durante leitura
-        fala.onboundary = function(event) {
-            if (event.name === "word" || event.charIndex !== undefined) {
-                let pos = event.charIndex;
-                let parcial = textoParaLer.slice(0, pos);
-                let index = parcial.split(/\s+/).length - 1;
+        // criar highlights sem modificar main
+        const palavras = textoParaLer.split(/\s+/);
+        const overlay = document.createElement('div');
+        overlay.classList.add('leitura-overlay');
+        overlay.style.position = 'absolute';
+        overlay.style.top = main.offsetTop + 'px';
+        overlay.style.left = main.offsetLeft + 'px';
+        overlay.style.width = main.offsetWidth + 'px';
+        overlay.style.height = main.offsetHeight + 'px';
+        overlay.style.pointerEvents = 'none';
+        overlay.style.fontSize = window.getComputedStyle(main).fontSize;
+        overlay.style.lineHeight = window.getComputedStyle(main).lineHeight;
+        overlay.style.zIndex = 1000;
 
-                spans.forEach(s => s.style.background = "");
-                if (spans[index]) {
-                    spans[index].style.background = "yellow";
-                }
+        document.body.appendChild(overlay);
+
+        palavras.forEach((p, i) => {
+            const span = document.createElement('span');
+            span.textContent = p + ' ';
+            overlay.appendChild(span);
+        });
+
+        const spans = overlay.querySelectorAll('span');
+        let index = 0;
+
+        fala.onboundary = function(event) {
+            if (event.charIndex !== undefined) {
+                let parcial = textoParaLer.slice(0, event.charIndex);
+                index = parcial.split(/\s+/).length - 1;
+                spans.forEach(s => s.style.background = '');
+                if (spans[index]) spans[index].style.background = 'yellow';
             }
         };
 
         fala.onend = function() {
-            main.innerHTML = textoOriginal; // volta ao normal no fim
+            overlay.remove(); // remove highlights ao final
         };
 
         window.speechSynthesis.speak(fala);
