@@ -73,7 +73,6 @@ section {
     line-height: 2;
     position: relative;
     color: var(--vinho-escuro); 
-    transition: font-size 0.3s ease;
 }
 
 .linha-do-tempo li {
@@ -116,7 +115,6 @@ section {
     max-width: 800px;
     margin: 0 auto; 
     box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
-    transition: font-size 0.3s ease;
 }
 
 .video-freddie h3 {
@@ -130,10 +128,9 @@ section {
 #FreddieMercury {
     position: relative;
     padding-top: 5rem;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+    margin: 3rem 0;
     background: url('img/coroaFM.png') top right no-repeat,
-        url('img/discoFM1.png') bottom left no-repeat;
+                url('img/discoFM1.png') bottom left no-repeat;
     background-size: 180px 180px;
 }
 
@@ -271,7 +268,8 @@ h2 {
 .citacao-estrela blockquote {
     position: relative;
     z-index: 1;
-    }
+}
+
 .figcaption {
     font-family: 'Dancing Script', cursive;
     font-size: 1.1rem;
@@ -298,33 +296,41 @@ h2 {
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; 
-    overflow: hidden;
+    pointer-events: none;
+    overflow: visible;
 }
 
 .particles span {
     position: absolute;
     font-size: 1.2rem;
-    animation: float 5s linear infinite;
+    animation: float 6s linear infinite;
     opacity: 0.8;
 }
 
-.particles span:nth-child(1) { animation-delay: 0s; }
-.particles span:nth-child(2) { animation-delay: 1s; }
-.particles span:nth-child(3) { animation-delay: 2s; }
-.particles span:nth-child(4) { animation-delay: 3s; }
+.particles span:nth-child(1) { left: 5%; top: 80%; --i:1; }
+.particles span:nth-child(2) { left: 25%; top: 90%; --i:2; }
+.particles span:nth-child(3) { left: 50%; top: 85%; --i:3; }
+.particles span:nth-child(4) { left: 75%; top: 95%; --i:4; }
 
 @keyframes float {
     0% {
         transform: translate(0, 0) rotate(0deg);
         opacity: 0.8;
     }
+    25% {
+        transform: translate(calc(-10px + 20px * var(--i)), -20px) rotate(90deg);
+        opacity: 1;
+    }
     50% {
-        transform: translate(calc(-50px + 100px * var(--rand-x)), -50px) rotate(180deg);
+        transform: translate(calc(10px - 20px * var(--i)), -40px) rotate(180deg);
+        opacity: 0.9;
+    }
+    75% {
+        transform: translate(calc(-5px + 10px * var(--i)), -60px) rotate(270deg);
         opacity: 1;
     }
     100% {
-        transform: translate(calc(50px - 100px * var(--rand-x)), -100px) rotate(360deg);
+        transform: translate(0, -80px) rotate(360deg);
         opacity: 0.8;
     }
-}
+    }
