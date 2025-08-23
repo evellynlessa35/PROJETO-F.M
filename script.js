@@ -40,27 +40,46 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     const estrela = document.getElementById('estrela-musica');
-    const musica = document.getElementById('musica-freddie');
+const musica = document.getElementById('musica-freddie');
 
-    
-    estrela.style.color = 'gold';
-    estrela.style.cursor = 'pointer';
+estrela.style.color = 'gold';
+estrela.style.cursor = 'pointer';
 
-    estrela.addEventListener('click', function() {
-    
+estrela.addEventListener('click', function() {
+    if(musica.paused){
         musica.play().then(() => {
-            estrela.style.color = '#ffdd00'; 
+            estrela.style.color = '#ffdd00';
             estrela.title = 'Clique para pausar a música';
         }).catch((err) => {
             console.error('Erro ao tocar a música:', err);
             alert('Não foi possível tocar a música. Clique no ⭐ para tentar novamente.');
         });
+    } else {
+        musica.pause();
+        estrela.style.color = 'gold';
+        estrela.title = 'Clique para ouvir Freddie!';
+    }
+});const estrela = document.getElementById('estrela-musica');
+const musica = document.getElementById('musica-freddie');
 
-    
-        if (!musica.paused) {
-            musica.pause();
-            estrela.style.color = 'gold';
-            estrela.title = 'Clique para ouvir Freddie!';
+estrela.style.color = 'gold';
+estrela.style.cursor = 'pointer';
+
+estrela.addEventListener('click', function() {
+    if(musica.paused){
+        musica.play().then(() => {
+            estrela.style.color = '#ffdd00';
+            estrela.title = 'Clique para pausar a música';
+        }).catch((err) => {
+            console.error('Erro ao tocar a música:', err);
+            alert('Não foi possível tocar a música. Clique no ⭐ para tentar novamente.');
+        });
+    } else {
+        musica.pause();
+        estrela.style.color = 'gold';
+        estrela.title = 'Clique para ouvir Freddie!';
+    }
+});
         }
     });
 
