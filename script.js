@@ -43,20 +43,21 @@ ScrollReveal().reveal('#contato', { delay: 500 });
 
 
 const galeria = document.querySelector('#galeria');
-const emojis = ['⭐','🎵','✨','🎶']; 
-const numEmojis = 20;
+const emojis = ['⭐','🎵','✨','🎶'];
+const numEmojis = 30; 
 
 for (let i = 0; i < numEmojis; i++) {
     const span = document.createElement('span');
+    span.classList.add('particle');
     span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-    span.style.top = Math.random() * 100 + '%';
-    span.style.left = Math.random() * 100 + '%';
-    span.style.fontSize = (12 + Math.random() * 20) + 'px';
-    span.style.opacity = 0.8;
+   
+    span.style.top = Math.random() * galeria.offsetHeight + 'px';
+    span.style.left = Math.random() * galeria.offsetWidth + 'px';
+    
     galeria.appendChild(span);
  
-    const speedX = (Math.random() - 0.5) * 1.5;
-    const speedY = (Math.random() - 0.5) * 1.5;
+    const speedX = (Math.random() - 0.5) * 2; 
+    const speedY = (Math.random() - 0.5) * 2;
 
     function move() {
         let top = parseFloat(span.style.top);
@@ -65,13 +66,11 @@ for (let i = 0; i < numEmojis; i++) {
         top += speedY;
         left += speedX;
 
-        if (top < 0) top = 0;
-        if (top > 95) top = 95;
-        if (left < 0) left = 0;
-        if (left > 95) left = 95;
+        if (top < 0 || top > galeria.offsetHeight - 20) span.style.top = Math.random() * galeria.offsetHeight + 'px';
+        else span.style.top = top + 'px';
 
-        span.style.top = top + '%';
-        span.style.left = left + '%';
+        if (left < 0 || left > galeria.offsetWidth - 20) span.style.left = Math.random() * galeria.offsetWidth + 'px';
+        else span.style.left = left + 'px';
 
         requestAnimationFrame(move);
     }
