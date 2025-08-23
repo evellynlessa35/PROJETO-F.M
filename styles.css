@@ -17,11 +17,9 @@ header {
     background-color: #c7bbab;
 }
 
-
 section {
     padding-bottom: 5rem;
 }
-
 
 .nav-link {
     color: #4a0606;
@@ -47,14 +45,12 @@ section {
     height: auto;
 }
 
-
 .esquerda-conteudo {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
 }
-
 
 .botao-inicio {
     background-color: var(--vinho-escuro);
@@ -63,12 +59,12 @@ section {
     width: 14em;
     height: 3em;
     align-content: center;
-
 }
 
 .display-4 {
     text-shadow: -5px 5px var(--vinho-escuro);
 }
+
 .linha-do-tempo {
     list-style: none;          
     padding-left: 0;
@@ -77,6 +73,7 @@ section {
     line-height: 2;
     position: relative;
     color: var(--vinho-escuro); 
+    transition: font-size 0.3s ease;
 }
 
 .linha-do-tempo li {
@@ -106,7 +103,8 @@ section {
     color: var(--vinho-escuro);        
     text-align: center;
     margin-bottom: 2rem;
-    }
+}
+
 .destaque-citacao {
     background-color: var(--bege-claro); 
     color: var(--vinho-escuro);           
@@ -118,6 +116,14 @@ section {
     max-width: 800px;
     margin: 0 auto; 
     box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+    transition: font-size 0.3s ease;
+}
+.video-freddie h3 {
+    font-family: 'Lemon', cursive;
+    font-size: 1.8rem;
+    color: var(--vinho-escuro);
+    text-align: center;
+    margin-bottom: 1rem;
 }
 
 #FreddieMercury {
@@ -138,7 +144,6 @@ section {
     z-index: 1;
 }
 
-
 h2 {
     font-family: 'Lemon', serif;
     font-size: 2.5em;
@@ -148,7 +153,6 @@ h2 {
 
 #galeria {
     background-color: #c7bbab;
-
 }
 
 .fundo-galeria {
@@ -160,7 +164,6 @@ h2 {
     background-image: url('img/capaFM.png');
     background-size: cover;
     padding: 4rem 0;
-
 }
 
 .formulario {
@@ -180,6 +183,7 @@ h2 {
 .form-control {
     background-color: #c7bbab;
 }
+
 .menu-acessibilidade{
     position: fixed;
     top:2rem;
@@ -201,6 +205,7 @@ h2 {
 .opcoes-acessibilidade button{
     margin-bottom: 5px;
 }
+
 .apresenta-lista{
     display: none;
 }
@@ -235,6 +240,7 @@ h2 {
 .alto-contraste #galeria {
     background-color: var(--alto-contraste-fundo);
 }
+
 .alto-contraste .fundo-galeria {
     background: none;
-    }
+}
