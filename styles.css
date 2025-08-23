@@ -277,11 +277,10 @@ h2 {
     text-align: center;
     margin-top: 0.5rem;
 }
-/* Galeria */
 #galeria {
     background-color: #c7bbab;
     position: relative;
-    overflow: hidden; 
+    overflow: hidden;
     padding: 3rem 0;
 }
 
@@ -297,12 +296,11 @@ h2 {
     border-radius: 15px;
 }
 
-#galeria span {
+#galeria .particle {
     position: absolute;
     pointer-events: none;
     user-select: none;
     z-index: 2;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     opacity: 0.8;
-    transition: transform 0.2s linear;
-}
+    }
