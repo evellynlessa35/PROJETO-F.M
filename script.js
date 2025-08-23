@@ -42,6 +42,20 @@ ScrollReveal().reveal('#galeria', { delay: 500 });
 ScrollReveal().reveal('#contato', { delay: 500 });
 
 
+const estrela = document.getElementById('estrela-musica');
+const musica = document.getElementById('musica-freddie');
+
+estrela.addEventListener('click', () => {
+    if (musica.paused) {
+        musica.play();
+        estrela.style.backgroundColor = '#ffdd00'; 
+    } else {
+        musica.pause();
+        estrela.style.backgroundColor = 'gold'; 
+    }
+});
+
+
 document.querySelectorAll('.imagem-container').forEach(container => {
     const emojis = ['⭐','🎵','✨','🎶'];
     const numEmojis = 5;
