@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+um um@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
 
 :root {
@@ -296,11 +296,11 @@ h2 {
     border-radius: 15px;
 }
 
-#galeria .particle {
+.imagem-container .particle {
     position: absolute;
     pointer-events: none;
     user-select: none;
-    z-index: 2;
     font-size: 1.5rem;
     opacity: 0.8;
+    z-index: 2;
     }
