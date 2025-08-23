@@ -42,15 +42,39 @@ ScrollReveal().reveal('#galeria', { delay: 500 });
 ScrollReveal().reveal('#contato', { delay: 500 });
 
 
-document.querySelectorAll('.imagem-container').forEach(container => {
-  const particles = container.querySelector('.particles');
-  const symbols = ['⭐','✨','🎵','🎶'];
-  for(let i=0;i<15;i++){
+const galeria = document.querySelector('#galeria');
+const emojis = ['⭐','🎵','✨','🎶']; 
+const numEmojis = 20;
+
+for (let i = 0; i < numEmojis; i++) {
     const span = document.createElement('span');
-    span.innerText = symbols[Math.floor(Math.random()*symbols.length)];
-    span.style.left = Math.random()*100 + '%';
-    span.style.fontSize = (Math.random()*1.2+0.8) + 'rem';
-    span.style.animationDuration = (Math.random()*3+3) + 's';
-    particles.appendChild(span);
-  }
-});
+    span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    span.style.top = Math.random() * 100 + '%';
+    span.style.left = Math.random() * 100 + '%';
+    span.style.fontSize = (12 + Math.random() * 20) + 'px';
+    span.style.opacity = 0.8;
+    galeria.appendChild(span);
+ 
+    const speedX = (Math.random() - 0.5) * 1.5;
+    const speedY = (Math.random() - 0.5) * 1.5;
+
+    function move() {
+        let top = parseFloat(span.style.top);
+        let left = parseFloat(span.style.left);
+
+        top += speedY;
+        left += speedX;
+
+        if (top < 0) top = 0;
+        if (top > 95) top = 95;
+        if (left < 0) left = 0;
+        if (left > 95) left = 95;
+
+        span.style.top = top + '%';
+        span.style.left = left + '%';
+
+        requestAnimationFrame(move);
+    }
+
+    move();
+}
