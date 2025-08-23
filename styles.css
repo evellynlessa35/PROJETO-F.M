@@ -245,3 +245,29 @@ h2 {
 .alto-contraste .fundo-galeria {
     background: none;
 }
+.citacao-estrela {
+    position: relative;
+    display: inline-block;
+    padding: 2rem 3rem;
+    font-family: 'Georgia', serif;
+    font-size: 1.5rem;
+    color: var(--vinho-escuro);
+    text-align: center;
+    margin: 2rem auto;
+}
+
+.citacao-estrela::before {
+    content: "★";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(7);
+    color: #ffe600;
+    z-index: 0;
+    opacity: 0.2;
+}
+
+.citacao-estrela blockquote {
+    position: relative;
+    z-index: 1;
+    }
