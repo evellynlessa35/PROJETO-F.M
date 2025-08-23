@@ -245,10 +245,3 @@ h2 {
 .alto-contraste .fundo-galeria {
     background: none;
 }
-
-/* --- DESTAQUE AMARELO PARA LEITURA --- */
-.leitura-destacado {
-    background-color: yellow;
-    color: black;
-    transition: background 0.2s ease;
-    }
