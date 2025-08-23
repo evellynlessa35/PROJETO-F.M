@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.classList.toggle('alto-contraste');  
     });
 
-
+    
     ScrollReveal().reveal('#inicio', { delay: 500 });
     ScrollReveal().reveal('#FreddieMercury', { delay: 500 });
     ScrollReveal().reveal('#galeria', { delay: 500 });
@@ -42,17 +42,28 @@ document.addEventListener('DOMContentLoaded', function() {
     const estrela = document.getElementById('estrela-musica');
     const musica = document.getElementById('musica-freddie');
 
-    estrela.addEventListener('click', () => {
-        if (musica.paused) {
-            musica.play();
+    
+    estrela.style.color = 'gold';
+    estrela.style.cursor = 'pointer';
+
+    estrela.addEventListener('click', function() {
+    
+        musica.play().then(() => {
             estrela.style.color = '#ffdd00'; 
             estrela.title = 'Clique para pausar a música';
-        } else {
+        }).catch((err) => {
+            console.error('Erro ao tocar a música:', err);
+            alert('Não foi possível tocar a música. Clique no ⭐ para tentar novamente.');
+        });
+
+    
+        if (!musica.paused) {
             musica.pause();
-            estrela.style.color = 'gold'; 
+            estrela.style.color = 'gold';
             estrela.title = 'Clique para ouvir Freddie!';
         }
     });
+
 
     
     document.querySelectorAll('.imagem-container').forEach(container => {
