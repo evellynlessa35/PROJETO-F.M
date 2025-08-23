@@ -41,21 +41,81 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.classList.toggle('alto-contraste');
     });
 
+    
+    let fala;
+    let lendo = false;
+
     const botaoLer = document.createElement('button');
-    botaoLer.textContent = 'Ler página';
+    botaoLer.textContent = '▶ Ler página';
     botaoLer.classList.add('btn', 'btn-primary', 'fw-bold');
-    botaoLer.setAttribute('aria-label', 'Ler o conteúdo da página em voz alta');
     opcoesDeAcessibilidade.appendChild(botaoLer);
 
-    botaoLer.addEventListener('click', () => {
-        const textoParaLer = document.querySelector('main').innerText;
-        const fala = new SpeechSynthesisUtterance(textoParaLer);
-        fala.rate = 1;
-        fala.pitch = 1; 
-        window.speechSynthesis.speak(fala);
-    });
-});
+    const botaoPausar = document.createElement('button');
+    botaoPausar.textContent = '⏸ Pausar/Retomar';
+    botaoPausar.classList.add('btn', 'btn-secondary', 'fw-bold');
+    opcoesDeAcessibilidade.appendChild(botaoPausar);
 
+    const seletorVelocidade = document.createElement('input');
+    seletorVelocidade.type = 'range';
+    seletorVelocidade.min = 0.5;
+    seletorVelocidade.max = 2;
+    seletorVelocidade.step = 0.1;
+    seletorVelocidade.value = 1;
+    seletorVelocidade.title = "Velocidade da leitura";
+    opcoesDeAcessibilidade.appendChild(seletorVelocidade);
+
+    const main = document.querySelector('main');
+    let textoOriginal = main.innerHTML;
+
+    botaoLer.addEventListener('click', () => {
+        if (window.speechSynthesis.speaking) {
+            window.speechSynthesis.cancel(); 
+            main.innerHTML = textoOriginal; 
+        }
+
+        const textoParaLer = main.innerText;
+        const palavras = textoParaLer.split(" ");
+        main.innerHTML = palavras.map(p => `<span>${p}</span>`).join(" ");
+
+        const spans = main.querySelectorAll("span");
+        let index = 0;
+
+        fala = new SpeechSynthesisUtterance(textoParaLer);
+        fala.rate = seletorVelocidade.value;
+        fala.pitch = 1;
+
+        fala.onboundary = function(event) {
+            if (event.name === "word" && index < spans.length) {
+                spans.forEach(s => s.style.background = ""); 
+                spans[index].style.background = "yellow";
+                index++;
+            }
+        };
+
+        fala.onend = function() {
+            main.innerHTML = textoOriginal; 
+        };
+
+        window.speechSynthesis.speak(fala);
+        lendo = true;
+    });
+
+    botaoPausar.addEventListener('click', () => {
+        if (lendo) {
+            if (window.speechSynthesis.paused) 
+                window.speechSynthesis.resume();
+            } else {
+                window.speechSynthesis.pause();
+            }
+        }
+    });
+
+    seletorVelocidade.addEventListener('input', () => {
+        if (fala) {
+            fala.rate = seletorVelocidade.value;
+        }
+    });
+}};
 ScrollReveal().reveal('#inicio', { delay: 500 });
 ScrollReveal().reveal('#FreddieMercury', { delay: 500 });
 ScrollReveal().reveal('#galeria', { delay: 500 });
