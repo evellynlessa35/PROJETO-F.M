@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.classList.toggle('alto-contraste');
     });
 
-    
+    // -------- LEITOR DE TELA ---------
     let fala;
     let lendo = false;
 
@@ -69,31 +69,38 @@ document.addEventListener('DOMContentLoaded', function() {
 
     botaoLer.addEventListener('click', () => {
         if (window.speechSynthesis.speaking) {
-            window.speechSynthesis.cancel(); 
-            main.innerHTML = textoOriginal; 
+            window.speechSynthesis.cancel();
+            main.innerHTML = textoOriginal; // restaura texto normal
         }
 
         const textoParaLer = main.innerText;
-        const palavras = textoParaLer.split(" ");
-        main.innerHTML = palavras.map(p => `<span>${p}</span>`).join(" ");
+        const palavras = textoParaLer.split(/\s+/);
 
-        const spans = main.querySelectorAll("span");
-        let index = 0;
+        // recria conteúdo em spans
+        main.innerHTML = palavras.map(p => `<span class="leitura-palavra">${p}</span>`).join(" ");
+
+        const spans = main.querySelectorAll("span.leitura-palavra");
 
         fala = new SpeechSynthesisUtterance(textoParaLer);
         fala.rate = seletorVelocidade.value;
         fala.pitch = 1;
 
+        // destacar palavra durante leitura
         fala.onboundary = function(event) {
-            if (event.name === "word" && index < spans.length) {
-                spans.forEach(s => s.style.background = ""); 
-                spans[index].style.background = "yellow";
-                index++;
+            if (event.name === "word" || event.charIndex !== undefined) {
+                let pos = event.charIndex;
+                let parcial = textoParaLer.slice(0, pos);
+                let index = parcial.split(/\s+/).length - 1;
+
+                spans.forEach(s => s.style.background = "");
+                if (spans[index]) {
+                    spans[index].style.background = "yellow";
+                }
             }
         };
 
         fala.onend = function() {
-            main.innerHTML = textoOriginal; 
+            main.innerHTML = textoOriginal; // volta ao normal no fim
         };
 
         window.speechSynthesis.speak(fala);
@@ -102,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     botaoPausar.addEventListener('click', () => {
         if (lendo) {
-            if (window.speechSynthesis.paused) 
+            if (window.speechSynthesis.paused) {
                 window.speechSynthesis.resume();
             } else {
                 window.speechSynthesis.pause();
@@ -115,7 +122,9 @@ document.addEventListener('DOMContentLoaded', function() {
             fala.rate = seletorVelocidade.value;
         }
     });
-}};
+});
+
+// ScrollReveal
 ScrollReveal().reveal('#inicio', { delay: 500 });
 ScrollReveal().reveal('#FreddieMercury', { delay: 500 });
 ScrollReveal().reveal('#galeria', { delay: 500 });
