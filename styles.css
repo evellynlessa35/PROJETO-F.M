@@ -118,6 +118,7 @@ section {
     box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
     transition: font-size 0.3s ease;
 }
+
 .video-freddie h3 {
     font-family: 'Lemon', cursive;
     font-size: 1.8rem;
@@ -244,3 +245,10 @@ h2 {
 .alto-contraste .fundo-galeria {
     background: none;
 }
+
+/* --- DESTAQUE AMARELO PARA LEITURA --- */
+.leitura-destacado {
+    background-color: yellow;
+    color: black;
+    transition: background 0.2s ease;
+    }
