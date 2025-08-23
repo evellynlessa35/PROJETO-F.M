@@ -76,7 +76,7 @@ section {
     padding-top: 5rem;
     margin-top: 3rem;
     margin-bottom: 3rem;
-    background: url('img/') top right no-repeat,
+    background: url('img/coroaFM.png') top right no-repeat,
         url('img/discoFM1.png') bottom left no-repeat;
     background-size: 180px 180px;
 }
@@ -103,7 +103,7 @@ h2 {
 }
 
 .fundo-galeria {
-    background: url('img/coroaFM.png') bottom right no-repeat;
+    background: url('img/discoFM.png') bottom right no-repeat;
     background-size: 180px 180px;
 }
 
