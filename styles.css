@@ -333,3 +333,29 @@ h2 {
         opacity: 0.8;
     }
         }
+#estrela-musica-container {
+    position: fixed; 
+    bottom: 2rem;  
+    right: 2rem;  
+    z-index: 1000; 
+}
+
+#estrela-musica {
+    width: 60px;
+    height: 60px;
+    background-color: gold;
+    clip-path: polygon(
+        50% 0%, 61% 35%, 98% 35%, 68% 57%, 
+        79% 91%, 50% 70%, 21% 91%, 32% 57%, 
+        2% 35%, 39% 35%
+    );
+    border: 2px solid #ffa500;
+    box-shadow: 0 0 10px rgba(255,165,0,0.8);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#estrela-musica:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 20px rgba(255,215,0,1);
+    }
