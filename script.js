@@ -44,36 +44,39 @@ ScrollReveal().reveal('#contato', { delay: 500 });
 
 const galeria = document.querySelector('#galeria');
 const emojis = ['⭐','🎵','✨','🎶'];
-const numEmojis = 30; 
 
-for (let i = 0; i < numEmojis; i++) {
-    const span = document.createElement('span');
-    span.classList.add('particle');
-    span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-   
-    span.style.top = Math.random() * galeria.offsetHeight + 'px';
-    span.style.left = Math.random() * galeria.offsetWidth + 'px';
-    
-    galeria.appendChild(span);
- 
-    const speedX = (Math.random() - 0.5) * 2; 
-    const speedY = (Math.random() - 0.5) * 2;
+document.querySelectorAll('.imagem-container').forEach(container => {
+    const numEmojis = 5; 
+    for (let i = 0; i < numEmojis; i++) {
+        const span = document.createElement('span');
+        span.classList.add('particle');
+        span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
 
-    function move() {
-        let top = parseFloat(span.style.top);
-        let left = parseFloat(span.style.left);
+        
+        span.style.top = Math.random() * container.offsetHeight + 'px';
+        span.style.left = Math.random() * container.offsetWidth + 'px';
 
-        top += speedY;
-        left += speedX;
+        container.appendChild(span);
+        const speedX = (Math.random() - 0.5) * 2;
+        const speedY = (Math.random() - 0.5) * 2;
 
-        if (top < 0 || top > galeria.offsetHeight - 20) span.style.top = Math.random() * galeria.offsetHeight + 'px';
-        else span.style.top = top + 'px';
+        function move() {
+            let top = parseFloat(span.style.top);
+            let left = parseFloat(span.style.left);
 
-        if (left < 0 || left > galeria.offsetWidth - 20) span.style.left = Math.random() * galeria.offsetWidth + 'px';
-        else span.style.left = left + 'px';
+            top += speedY;
+            left += speedX;
 
-        requestAnimationFrame(move);
+
+            if (top < 0 || top > container.offsetHeight - 20) span.style.top = Math.random() * container.offsetHeight + 'px';
+            else span.style.top = top + 'px';
+
+            if (left < 0 || left > container.offsetWidth - 20) span.style.left = Math.random() * container.offsetWidth + 'px';
+            else span.style.left = left + 'px';
+
+            requestAnimationFrame(move);
+        }
+
+        move();
     }
-
-    move();
-}
+});
