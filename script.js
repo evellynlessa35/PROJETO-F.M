@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+
     
     const botaoDeAcessibilidade = document.getElementById('botao-acessibilidade');
     const opcoesDeAcessibilidade = document.getElementById('opcoes-acessibilidade');
@@ -31,24 +32,24 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.classList.toggle('alto-contraste');  
     });
 
-    
+
     ScrollReveal().reveal('#inicio', { delay: 500 });
     ScrollReveal().reveal('#FreddieMercury', { delay: 500 });
     ScrollReveal().reveal('#galeria', { delay: 500 });
     ScrollReveal().reveal('#contato', { delay: 500 });
 
-    
+
     const estrela = document.getElementById('estrela-musica');
     const musica = document.getElementById('musica-freddie');
 
     estrela.addEventListener('click', () => {
         if (musica.paused) {
             musica.play();
-            estrela.style.backgroundColor = '#ffdd00';
+            estrela.style.color = '#ffdd00'; 
             estrela.title = 'Clique para pausar a música';
         } else {
             musica.pause();
-            estrela.style.backgroundColor = 'gold';
+            estrela.style.color = 'gold'; 
             estrela.title = 'Clique para ouvir Freddie!';
         }
     });
