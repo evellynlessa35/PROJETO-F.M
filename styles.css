@@ -69,7 +69,44 @@ section {
 .display-4 {
     text-shadow: -5px 5px var(--vinho-escuro);
 }
+.linha-do-tempo {
+    list-style: none;          
+    padding-left: 0;
+    font-family: 'Georgia', serif; 
+    font-size: 1.1rem;
+    line-height: 2;
+    position: relative;
+    color: var(--vinho-escuro); 
+}
 
+.linha-do-tempo li {
+    margin: 1rem 0;
+    padding-left: 2rem;
+    position: relative;
+    border-left: 3px solid var(--dourado); 
+}
+
+.linha-do-tempo li::before {
+    content: '';
+    position: absolute;
+    left: -7px;
+    top: 0.5rem;
+    width: 14px;
+    height: 14px;
+    background-color: var(--dourado); 
+    border-radius: 50%;
+    border: 2px solid var(--preto);   
+}
+
+.linha-do-tempo li strong {
+    color: var(--dourado);             
+}
+
+#timeline h2 {
+    color: var(--vinho-escuro);        /* título em vinho */
+    text-align: center;
+    margin-bottom: 2rem;
+    }
 
 #FreddieMercury {
     position: relative;
