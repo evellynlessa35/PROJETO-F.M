@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
     aumentaFonteBotao.addEventListener('click', function() {
         tamanhoAtualFonte += 0.1;
         document.body.style.fontSize = `${tamanhoAtualFonte}rem`;
+
         elementosExtras.forEach(el => {
             let tamanhoAtual = parseFloat(window.getComputedStyle(el).fontSize);
             el.style.fontSize = `${tamanhoAtual + 1}px`;
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     diminuiFonteBotao.addEventListener('click', function() {
         tamanhoAtualFonte -= 0.1;
         document.body.style.fontSize = `${tamanhoAtualFonte}rem`;
+
         elementosExtras.forEach(el => {
             let tamanhoAtual = parseFloat(window.getComputedStyle(el).fontSize);
             el.style.fontSize = `${tamanhoAtual - 1}px`;
@@ -42,6 +44,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // -------- LEITOR DE TELA ---------
     let fala;
     let lendo = false;
+    let index = 0;
+    let spans;
 
     const botaoLer = document.createElement('button');
     botaoLer.textContent = '▶ Ler página';
@@ -63,73 +67,56 @@ document.addEventListener('DOMContentLoaded', function() {
     opcoesDeAcessibilidade.appendChild(seletorVelocidade);
 
     const main = document.querySelector('main');
-    const textoParaLer = main.innerText;
+    let textoOriginal = main.innerHTML;
 
-    botaoLer.addEventListener('click', () => {
-        // cancela leitura atual
+    function iniciarLeitura() {
         if (window.speechSynthesis.speaking) {
             window.speechSynthesis.cancel();
         }
+        main.innerHTML = textoOriginal;
+        const textoParaLer = main.innerText;
+        const palavras = textoParaLer.split(/\s+/);
+        main.innerHTML = palavras.map(p => `<span class="leitura-palavra">${p}</span>`).join(" ");
+        spans = main.querySelectorAll("span.leitura-palavra");
+        index = 0;
 
         fala = new SpeechSynthesisUtterance(textoParaLer);
-        fala.rate = seletorVelocidade.value;
+        fala.rate = parseFloat(seletorVelocidade.value);
         fala.pitch = 1;
 
-        // criar highlights sem modificar main
-        const palavras = textoParaLer.split(/\s+/);
-        const overlay = document.createElement('div');
-        overlay.classList.add('leitura-overlay');
-        overlay.style.position = 'absolute';
-        overlay.style.top = main.offsetTop + 'px';
-        overlay.style.left = main.offsetLeft + 'px';
-        overlay.style.width = main.offsetWidth + 'px';
-        overlay.style.height = main.offsetHeight + 'px';
-        overlay.style.pointerEvents = 'none';
-        overlay.style.fontSize = window.getComputedStyle(main).fontSize;
-        overlay.style.lineHeight = window.getComputedStyle(main).lineHeight;
-        overlay.style.zIndex = 1000;
-
-        document.body.appendChild(overlay);
-
-        palavras.forEach((p, i) => {
-            const span = document.createElement('span');
-            span.textContent = p + ' ';
-            overlay.appendChild(span);
-        });
-
-        const spans = overlay.querySelectorAll('span');
-        let index = 0;
-
         fala.onboundary = function(event) {
-            if (event.charIndex !== undefined) {
-                let parcial = textoParaLer.slice(0, event.charIndex);
-                index = parcial.split(/\s+/).length - 1;
-                spans.forEach(s => s.style.background = '');
-                if (spans[index]) spans[index].style.background = 'yellow';
+            if (event.name === "word" || event.charIndex !== undefined) {
+                let pos = event.charIndex;
+                let i = textoParaLer.slice(0, pos).split(/\s+/).length - 1;
+                spans.forEach(s => s.style.background = "");
+                if (spans[i]) spans[i].style.background = "yellow";
             }
         };
 
         fala.onend = function() {
-            overlay.remove(); // remove highlights ao final
+            main.innerHTML = textoOriginal;
+            lendo = false;
         };
 
         window.speechSynthesis.speak(fala);
         lendo = true;
-    });
+    }
+
+    botaoLer.addEventListener('click', iniciarLeitura);
 
     botaoPausar.addEventListener('click', () => {
-        if (lendo) {
-            if (window.speechSynthesis.paused) {
-                window.speechSynthesis.resume();
-            } else {
-                window.speechSynthesis.pause();
-            }
+        if (!fala) return;
+        if (window.speechSynthesis.paused) {
+            window.speechSynthesis.resume();
+        } else {
+            window.speechSynthesis.pause();
         }
     });
 
     seletorVelocidade.addEventListener('input', () => {
-        if (fala) {
-            fala.rate = seletorVelocidade.value;
+        if (lendo) {
+            // reinicia leitura com nova velocidade
+            iniciarLeitura();
         }
     });
 });
