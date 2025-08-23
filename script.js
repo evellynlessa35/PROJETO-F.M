@@ -41,3 +41,16 @@ ScrollReveal().reveal('#FreddieMercury', { delay: 500 });
 ScrollReveal().reveal('#galeria', { delay: 500 });
 ScrollReveal().reveal('#contato', { delay: 500 });
 
+
+document.querySelectorAll('.imagem-container').forEach(container => {
+  const particles = container.querySelector('.particles');
+  const symbols = ['⭐','✨','🎵','🎶'];
+  for(let i=0;i<15;i++){
+    const span = document.createElement('span');
+    span.innerText = symbols[Math.floor(Math.random()*symbols.length)];
+    span.style.left = Math.random()*100 + '%';
+    span.style.fontSize = (Math.random()*1.2+0.8) + 'rem';
+    span.style.animationDuration = (Math.random()*3+3) + 's';
+    particles.appendChild(span);
+  }
+});
