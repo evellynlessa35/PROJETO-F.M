@@ -272,3 +272,10 @@ h2 {
     position: relative;
     z-index: 1;
     }
+.figcaption {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.1rem;
+    color: var(--vinho-escuro);
+    text-align: center;
+    margin-top: 0.5rem;
+}
