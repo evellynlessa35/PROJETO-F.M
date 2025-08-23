@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     botaoDeAcessibilidade.addEventListener('click', function() {
         botaoDeAcessibilidade.classList.toggle('rotacao-botao');
         opcoesDeAcessibilidade.classList.toggle('apresenta-lista');
+
         const botaoSelecionado = botaoDeAcessibilidade.getAttribute('aria-expanded') === 'true';
         botaoDeAcessibilidade.setAttribute('aria-expanded', !botaoSelecionado);
     });
@@ -39,22 +40,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // -------- LEITOR DE TELA ---------
-    let fala;
-    let lendo = false;
+    const main = document.querySelector('main');
+    let textoOriginal = main.innerHTML;
 
-    // Botão Ler
     const botaoLer = document.createElement('button');
     botaoLer.textContent = '▶ Ler página';
     botaoLer.classList.add('btn', 'btn-primary', 'fw-bold');
     opcoesDeAcessibilidade.appendChild(botaoLer);
 
-    // Botão Pausar/Retomar
     const botaoPausar = document.createElement('button');
     botaoPausar.textContent = '⏸ Pausar/Retomar';
     botaoPausar.classList.add('btn', 'btn-secondary', 'fw-bold');
     opcoesDeAcessibilidade.appendChild(botaoPausar);
 
-    // Controle de velocidade
     const seletorVelocidade = document.createElement('input');
     seletorVelocidade.type = 'range';
     seletorVelocidade.min = 0.5;
@@ -64,59 +62,96 @@ document.addEventListener('DOMContentLoaded', function() {
     seletorVelocidade.title = "Velocidade da leitura";
     opcoesDeAcessibilidade.appendChild(seletorVelocidade);
 
-    const velocidadeLabel = document.createElement('span');
-    velocidadeLabel.textContent = ` Velocidade: ${seletorVelocidade.value}x`;
-    opcoesDeAcessibilidade.appendChild(velocidadeLabel);
-
-    seletorVelocidade.addEventListener('input', () => {
-        velocidadeLabel.textContent = ` Velocidade: ${seletorVelocidade.value}x`;
-        if (fala) {
-            fala.rate = parseFloat(seletorVelocidade.value);
-        }
-    });
-
-    const main = document.querySelector('main');
+    let fala;
+    let lendo = false;
+    let pausado = false;
     let palavras = [];
+    let spans = [];
+    let index = 0;
 
-    botaoLer.addEventListener('click', () => {
-        if (window.speechSynthesis.speaking) {
-            window.speechSynthesis.cancel();
-        }
+    function iniciarLeitura() {
+        // Cancela qualquer leitura em andamento
+        window.speechSynthesis.cancel();
+        main.innerHTML = textoOriginal;
 
-        palavras = main.innerText.split(/\s+/);
+        const textoParaLer = main.innerText;
+        palavras = textoParaLer.split(/\s+/);
+        main.innerHTML = palavras.map(p => `<span class="leitura-palavra">${p}</span>`).join(" ");
+        spans = main.querySelectorAll("span.leitura-palavra");
+        index = 0;
 
-        fala = new SpeechSynthesisUtterance(main.innerText);
+        fala = new SpeechSynthesisUtterance(textoParaLer);
         fala.rate = parseFloat(seletorVelocidade.value);
         fala.pitch = 1;
 
-        let index = 0;
-
         fala.onboundary = function(event) {
-            if (event.name === 'word' || event.charIndex !== undefined) {
-                index = event.charIndex !== undefined ? main.innerText.slice(0, event.charIndex).split(/\s+/).length - 1 : index;
-                // Remove destaque anterior
-                main.querySelectorAll('.leitura-destacado').forEach(el => el.classList.remove('leitura-destacado'));
-                // Destaca palavra atual criando um span temporário
-                const regex = new RegExp(`\\b${palavras[index]}\\b`);
-                main.innerHTML = main.innerHTML.replace(regex, `<span class="leitura-destacado">${palavras[index]}</span>`);
+            if (event.name === "word" || event.charIndex !== undefined) {
+                let pos = event.charIndex || 0;
+                let parcial = textoParaLer.slice(0, pos);
+                let idx = parcial.split(/\s+/).length - 1;
+                if (idx >= 0 && idx < spans.length) {
+                    spans.forEach(s => s.style.background = "");
+                    spans[idx].style.background = "yellow";
+                    index = idx + 1;
+                }
             }
         };
 
         fala.onend = function() {
-            main.innerHTML = main.innerHTML.replace(/<span class="leitura-destacado">(.*?)<\/span>/g, '$1');
+            main.innerHTML = textoOriginal;
             lendo = false;
+            pausado = false;
         };
 
         window.speechSynthesis.speak(fala);
         lendo = true;
-    });
+        pausado = false;
+    }
+
+    botaoLer.addEventListener('click', iniciarLeitura);
 
     botaoPausar.addEventListener('click', () => {
         if (!lendo) return;
-        if (window.speechSynthesis.paused) {
-            window.speechSynthesis.resume();
-        } else {
+
+        if (!pausado) {
             window.speechSynthesis.pause();
+            pausado = true;
+        } else {
+            window.speechSynthesis.resume();
+            pausado = false;
+        }
+    });
+
+    // Atualiza velocidade em tempo real
+    seletorVelocidade.addEventListener('input', () => {
+        if (lendo && fala) {
+            // Pega palavras restantes
+            const textoRestante = palavras.slice(index).join(" ");
+            window.speechSynthesis.cancel();
+
+            fala = new SpeechSynthesisUtterance(textoRestante);
+            fala.rate = parseFloat(seletorVelocidade.value);
+            fala.pitch = 1;
+
+            fala.onboundary = function(event) {
+                if (event.name === "word" || event.charIndex !== undefined) {
+                    let pos = event.charIndex || 0;
+                    let parcial = textoRestante.slice(0, pos);
+                    let idx = parcial.split(/\s+/).length - 1;
+                    if (idx >= 0 && idx < spans.length) {
+                        spans.forEach(s => s.style.background = "");
+                        spans[index + idx].style.background = "yellow";
+                    }
+                }
+            };
+
+            fala.onend = function() {
+                main.innerHTML = textoOriginal;
+                lendo = false;
+                pausado = false;
+            };
+
+            window.speechSynthesis.speak(fala);
         }
     });
 });
