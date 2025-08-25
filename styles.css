@@ -105,16 +105,16 @@ margin-bottom: 2rem;
 }
 
 .destaque-citacao {
-background-color: var(--bege-claro);
-(color: var(--alto-contraste-texto); background-color: var(--alto-contraste-fundo); border-color: var(--alto-contraste-link);)
-padding: 2rem;
-border-left: 5px solid var(--dourado);
-border-radius: 10px;
-font-family: 'Georgia', serif;
-font-size: 1.5rem;
-max-width: 800px;
-margin: 0 auto;
-box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    background-color: var(--alto-contraste-fundo);
+    color: var(--alto-contraste-texto);
+    border-left: 5px solid var(--alto-contraste-link);
+    padding: 2rem;
+    border-radius: 10px;
+    font-family: 'Georgia', serif;
+    font-size: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .video-freddie h3 {
