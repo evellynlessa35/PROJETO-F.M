@@ -117,118 +117,28 @@ section {
     box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
 }
 
-.video-freddie h3 {
-    font-family: 'Lemon', cursive;
-    font-size: 1.8rem;
-    color: var(--vinho-escuro);
-    text-align: center;
-    margin-bottom: 1rem;
-}
 
-#FreddieMercury {
-    position: relative;
-    padding-top: 5rem;
-    margin: 3rem 0;
-    background: url('img/coroaFM.png') top right no-repeat,
-                url('img/discoFM1.png') bottom left no-repeat;
-    background-size: 180px 180px;
-}
-
-#FreddieMercury .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    z-index: 1;
-}
-
-h2 {
-    font-family: 'Lemon', serif;
-    font-size: 2.5em;
-    font-style: normal;
-    color: var(--vinho-escuro);
-}
-
-#galeria {
-    background-color: #c7bbab;
-}
-
-.fundo-galeria {
-    background: url('img/discoFM.png') bottom right no-repeat;
-    background-size: 180px 180px;
-}
-
-#contato {
-    background-image: url('img/capaFM.png');
-    background-size: cover;
-    padding: 4rem 0;
-}
-
-.formulario {
-    background-color: #ffe8d1;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    font-weight: bold;
-}
-
-.formulario button {
-    background-color: #4a0606;
-    border: none;
-    font-weight: bold;
-}
-
-.form-control {
-    background-color: #c7bbab;
-}
-
-.menu-acessibilidade{
-    position: fixed;
-    top:2rem;
-    right:20px;
-    z-index: 1000;
-}
-
-.rotacao-botao{
-    transform: rotate(-90deg);
-    transform-origin: right center;
-}
-
-.opcoes-acessibilidade{
-    margin-top:10px;
-    display: flex;
-    flex-direction: column;
-}
-
-.opcoes-acessibilidade button{
-    margin-bottom: 5px;
-}
-
-.apresenta-lista{
-    display: none;
-}
-
-.alto-contraste{
+.alto-contraste {
     background-color: var(--alto-contraste-fundo);
     color: var(--alto-contraste-texto);
 }
 
 .alto-contraste header,
 .alto-contraste footer,
-.alto-contraste .formulario{
+.alto-contraste .formulario {
     background-color: var(--alto-contraste-fundo);
     color: var(--alto-contraste-texto);
 }
 
-.alto-contraste .nav-link{
+.alto-contraste .nav-link {
     color: var(--alto-contraste-link);
 }
 
 .alto-contraste .botao-inicio,
 .alto-contraste .formulario button,
-.alto-contraste .btn-primary{
+.alto-contraste .btn-primary {
     background-color: var(--alto-contraste-link);
-    color: var(--alto-contraste-fundo)
+    color: var(--alto-contraste-fundo);
 }
 
 .alto-contraste #FreddieMercury {
@@ -243,123 +153,60 @@ h2 {
     background: none;
 }
 
-.citacao-estrela {
-    position: relative;
-    display: inline-block;
-    padding: 2rem 3rem;
-    font-family: 'Georgia', serif;
-    font-size: 1.5rem;
-    color: var(--vinho-escuro);
-    text-align: center;
-    margin: 2rem auto;
+.alto-contraste .linha-do-tempo {
+    color: #ffffff;
 }
 
-.citacao-estrela::before {
-    content: "★";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(7);
-    color: #ffe600;
-    z-index: 0;
-    opacity: 0.2;
+.alto-contraste .linha-do-tempo li {
+    border-left: 3px solid #ffff00;
 }
 
-.citacao-estrela blockquote {
-    position: relative;
-    z-index: 1;
+.alto-contraste .linha-do-tempo li::before {
+    background-color: #ffff00;
+    border: 2px solid #ffffff;
 }
 
-.figcaption {
-    font-family: 'Dancing Script', cursive;
-    font-size: 1.1rem;
-    color: var(--vinho-escuro);
-    text-align: center;
-    margin-top: 0.5rem;
+.alto-contraste .linha-do-tempo li strong {
+    color: #ffff00;
 }
 
-.imagem-container {
-    position: relative;
-    display: inline-block;
-}
 
-.imagem-container img {
-    display: block;
-    width: 100%;
-    border-radius: 15px;
-}
-
-.particles {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: visible;
-}
-
-.particles span {
-    position: absolute;
-    font-size: 1.2rem;
-    animation: float 6s linear infinite;
-    opacity: 0.8;
-}
-
-.particles span:nth-child(1) { left: 5%; top: 80%; --i:1; }
-.particles span:nth-child(2) { left: 25%; top: 90%; --i:2; }
-.particles span:nth-child(3) { left: 50%; top: 85%; --i:3; }
-.particles span:nth-child(4) { left: 75%; top: 95%; --i:4; }
-
-@keyframes float {
-    0% {
-        transform: translate(0, 0) rotate(0deg);
-        opacity: 0.8;
-    }
-    25% {
-        transform: translate(calc(-10px + 20px * var(--i)), -20px) rotate(90deg);
-        opacity: 1;
-    }
-    50% {
-        transform: translate(calc(10px - 20px * var(--i)), -40px) rotate(180deg);
-        opacity: 0.9;
-    }
-    75% {
-        transform: translate(calc(-5px + 10px * var(--i)), -60px) rotate(270deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translate(0, -80px) rotate(360deg);
-        opacity: 0.8;
-    }
-        }
-#estrela-musica-container {
-    position: fixed; 
-    bottom: 2rem;  
-    right: 2rem;  
-    z-index: 1000; 
-}
-
-#estrela-musica {
-    width: 60px;
-    height: 60px;
-    background-color: gold;
-    clip-path: polygon(
-        50% 0%, 61% 35%, 98% 35%, 68% 57%, 
-        79% 91%, 50% 70%, 21% 91%, 32% 57%, 
-        2% 35%, 39% 35%
-    );
-    border: 2px solid #ffa500;
-    box-shadow: 0 0 10px rgba(255,165,0,0.8);
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-#estrela-musica:hover {
-    transform: scale(1.2);
-    box-shadow: 0 0 20px rgba(255,215,0,1);
+.alto-contraste .destaque-citacao {
+    background-color: #000000;
+    color: #ffffff;
+    border-left: 5px solid #ffff00;
     }
 
+.alto-contraste .linha-do-tempo {
+    color: #ffffff;
+}
+
+.alto-contraste .linha-do-tempo li {
+    border-left: 3px solid #ffff00;
+}
+
+.alto-contraste .linha-do-tempo li::before {
+    background-color: #ffff00;
+    border: 2px solid #ffffff;
+}
+
+.alto-contraste .linha-do-tempo li strong {
+    color: #ffff00;
+}
+
+.alto-contraste .destaque-citacao {
+    background-color: #000000;
+    color: #ffffff;
+    border-left: 5px solid #ffff00;
+}
+
+.alto-contraste .citacao-estrela {
+    color: #ffffff;
+}
+
+.alto-contraste .citacao-estrela::before {
+    color: #ffff00;
+}
 
 #estrela-musica-container {
     position: fixed; 
@@ -405,4 +252,3 @@ h2 {
     50% { transform: scale(1.1); box-shadow: 0 0 20px rgba(255,215,0,1); }
     100% { transform: scale(1); box-shadow: 0 0 10px rgba(255,165,0,0.8); }
 }
-
