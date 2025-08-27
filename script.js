@@ -1,3 +1,4 @@
+<!-- Evellyn Lessa 2E 13/08 -->
 document.addEventListener('DOMContentLoaded', function() {
 
     const botaoDeAcessibilidade = document.getElementById('botao-acessibilidade');
