@@ -413,5 +413,56 @@ box-shadow: 0 0 20px rgba(255,215,0,1), 0 0 30px rgba(255,223,0,0.7);
     height: auto;      /* mantém a proporção da imagem */
 }
 
+/* Caixa de Curiosidades ao lado da Linha do Tempo */
+#timeline-curiosidades {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+}
 
+#timeline-curiosidades .caixa-curiosidades {
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* relevo */
+    position: relative;
+    overflow: hidden;
+    padding: 2rem;
+    font-family: 'Dancing Script', cursive;
+    transition: transform 0.3s ease;
+}
+
+#timeline-curiosidades .caixa-curiosidades:hover {
+    transform: scale(1.03); /* leve zoom ao passar o mouse */
+}
+
+/* Partículas/glitter animado */
+#timeline-curiosidades .caixa-curiosidades .particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible;
+}
+
+#timeline-curiosidades .caixa-curiosidades .particles span {
+    position: absolute;
+    font-size: 1.2rem;
+    animation: sparkle 2s infinite;
+    opacity: 0.8;
+}
+
+#timeline-curiosidades .caixa-curiosidades .particles span:nth-child(1) { left: 5%; top: 80%; --i:1; }
+#timeline-curiosidades .caixa-curiosidades .particles span:nth-child(2) { left: 25%; top: 90%; --i:2; }
+#timeline-curiosidades .caixa-curiosidades .particles span:nth-child(3) { left: 50%; top: 85%; --i:3; }
+#timeline-curiosidades .caixa-curiosidades .particles span:nth-child(4) { left: 75%; top: 95%; --i:4; }
+
+@keyframes sparkle {
+    0% { transform: translate(0,0) rotate(0deg); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translate(50px, -50px) rotate(360deg); opacity: 0; }
+  }
   
