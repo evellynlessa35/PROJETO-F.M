@@ -1,212 +1,188 @@
-<!-- Evellyn Lessa 2E 13/08 -->
-<!DOCTYPE html>
-<html lang="pt-br">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <title>Freddie Mercury</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
+ <!-- Evellyn Lessa 2E 13/08 -->  <!DOCTYPE html>  <html lang="pt-br">  <head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+    <link rel="preconnect" href="https://fonts.googleapis.com">  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
+    <title>Freddie Mercury</title>  
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">  
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">  
+    <link rel="stylesheet" href="styles.css">  
+</head>  <body>  
+    <header class="p-5">  
+        <nav class="container d-flex justify-content-between align-items-center">  
+            <img src="img/tituloFM.png" class="nav-img" loading="lazy">  
+            <ul class="nav mt-5">  
+                <li class="nav-item"><a class="nav-link" href="#inicio">Início</a></li>  
+                <li class="nav-item"><a class="nav-link" href="#galeria">Galeria</a></li>  
+                <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>  
+            </ul>  
+            <div id="acessibilidade" class="menu-acessibilidade">   
+                <button id="botao-acessibilidade" class="btn btn-primary fw-bold rotacao-botao" aria-expanded="false">acessibilidade</button>  
+                <div id="opcoes-acessibilidade" class="opcoes-acessibilidade apresenta-lista">  
+                    <button id="aumentar-fonte" class="btn btn-primary fw-bold" aria-label="Aumentar o tamanho da fonte">A+</button>  
+                    <button id="diminuir-fonte" class="btn btn-primary fw-bold" aria-label="Diminuir o tamanho da fonte">A-</button>  
+                    <button id="alterna-contraste" class="btn btn-primary fw-bold" aria-label="Alterna o contraste de cores"> <i class="bi bi-shadows"></i></button>           
+                </div>  
+            </div>  
+        </nav>  
+    </header>  <main class="container my-5">  
+      
+    <section id="inicio" class="my-5">  
+        <div class="inicio-fundo d-flex justify-content-between align-items-center">  
+            <div class="esquerda-conteudo">  
+                <h1 class="display-4 text-white fst-italic fw-bold">Venha conhecer</h1>  
+                <img src="img/titulo2FM.png" class="mb-3" width="563" height="278" loading="lazy">  
+                <a href="#FreddieMercury" class="btn btn-primary btn-lg botao-inicio fw-semibold">Quero conhecer!</a>  
+            </div>  
+            <img src="img/queenFM.png" alt="Queen - CC0 Domínio Público / Acervo Arquivo Nacional" title="A imagem apresenta o cantor Freddie Mercury junto aos integrantes da banda Queen -Brian May, John Deacon e Roger Taylor." class="img-fluid img-inicio">  
+        </div>  
+    </section>  
 
-<body>
-    <header class="p-5">
-        <nav class="container d-flex justify-content-between align-items-center">
-            <img src="img/tituloFM.png" class="nav-img" loading="lazy">
-            <ul class="nav mt-5">
-                <li class="nav-item"><a class="nav-link" href="#inicio">Início</a></li>
-                <li class="nav-item"><a class="nav-link" href="#galeria">Galeria</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
-            </ul>
-            <div id="acessibilidade" class="menu-acessibilidade"> 
-                <button id="botao-acessibilidade" class="btn btn-primary fw-bold rotacao-botao" aria-expanded="false">acessibilidade</button>
-                <div id="opcoes-acessibilidade" class="opcoes-acessibilidade apresenta-lista">
-                    <button id="aumentar-fonte" class="btn btn-primary fw-bold" aria-label="Aumentar o tamanho da fonte">A+</button>
-                    <button id="diminuir-fonte" class="btn btn-primary fw-bold" aria-label="Diminuir o tamanho da fonte">A-</button>
-                    <button id="alterna-contraste" class="btn btn-primary fw-bold" aria-label="Alterna o contraste de cores"> <i class="bi bi-shadows"></i></button>         
-                </div>
-            </div>
-        </nav>
-    </header>
+    <section id="FreddieMercury" class="my-5 pt-6 secao-FreddieMercury" tabindex="0" aria-label="Seção explicativa sobre o Freddie Mercury.">  
+        <div class="container d-flex align-items-start flex-wrap">  
+            <div class="col-4 d-flex justify-content-center mb-4">  
+                <img src="img/cicleFM.png" class="rounded-pill" width="273" height="331" loading="lazy">  
+            </div>  
 
-    <main class="container my-5">
-        
-        <section id="inicio" class="my-5">
-            <div class="inicio-fundo d-flex justify-content-between align-items-center">
-                <div class="esquerda-conteudo">
-                    <h1 class="display-4 text-white fst-italic fw-bold">Venha conhecer</h1>
-                    <img src="img/titulo2FM.png" class="mb-3" width="563" height="278" loading="lazy">
-                    <a href="#FreddieMercury" class="btn btn-primary btn-lg botao-inicio fw-semibold">Quero conhecer!</a>
-                </div>
-                <img src="img/queenFM.png" alt="Queen - CC0 Domínio Público / Acervo Arquivo Nacional" title="A imagem apresenta o cantor Freddie Mercury junto aos integrantes da banda Queen -Brian May, John Deacon e Roger Taylor." class="img-fluid img-inicio">
-            </div>
-        </section>
+            <div class="col-5">  
+                <h2>Quem foi Freddie Mercury?</h2>  
+                <p class="p-2">  
+                    Freddie Mercury (nome de nascimento Farrokh Bulsara; nascido em Stone Town em 5 de setembro   
+                    de 1946 e falecido em Londres em 24 de novembro de 1991) foi um cantor, compositor e pianista   
+                    britânico, amplamente reconhecido por seu papel como vocalista da banda de rock Queen.   
+                    É frequentemente lembrado como um dos maiores vocalistas da história da música.  
+                    <a href="https://pt.wikipedia.org/wiki/Freddie_Mercury" target="_blank">Fonte: Wikipedia</a>  
+                </p>  
 
-        <section id="FreddieMercury" class="my-5 pt-6 secao-FreddieMercury" tabindex="0" aria-label="Seção explicativa sobre o Freddie Mercury.">
-            <div class="container d-flex align-items-start flex-wrap">
-                <div class="col-4 d-flex justify-content-center mb-4">
-                    <img src="img/cicleFM.png" class="rounded-pill" width="273" height="331" loading="lazy">
-                </div>
+                <section id="timeline" class="my-5">  
+                    <h2 class="acessivel">Linha do Tempo</h2>    
+                    <ul class="linha-do-tempo acessivel">    
+                        <li><strong>1946</strong> – Nasce em Stone Town</li>    
+                        <li><strong>1970</strong> – Forma a banda Queen</li>       
+                        <li><strong>1985</strong> – Live Aid</li>    
+                        <li><strong>1991</strong> – Falece em Londres</li>    
+                    </ul>    
+                </section>    
 
-                <div class="col-5">
-                    <h2>Quem foi Freddie Mercury?</h2>
-                    <p class="p-2">
-                        Freddie Mercury (nome de nascimento Farrokh Bulsara; nascido em Stone Town em 5 de setembro 
-                        de 1946 e falecido em Londres em 24 de novembro de 1991) foi um cantor, compositor e pianista 
-                        britânico, amplamente reconhecido por seu papel como vocalista da banda de rock Queen. 
-                        É frequentemente lembrado como um dos maiores vocalistas da história da música.
-                        <a href="https://pt.wikipedia.org/wiki/Freddie_Mercury" target="_blank">Fonte: Wikipedia</a>
-                    </p>
+                <section id="citacao" class="my-5 text-center acessivel citacao-estrela">    
+                    <blockquote class="fst-italic fs-4">    
+                        "I won't be a rock star. I will be a legend." — Freddie Mercury    
+                    </blockquote>    
+                </section>  
 
-                    <section id="timeline-curiosidades" class="my-5 d-flex justify-content-between flex-wrap">
-    
-    <!-- Linha do tempo -->
-    <div class="col-md-6">
-        <h2 class="acessivel">Linha do Tempo</h2>  
-        <ul class="linha-do-tempo acessivel">  
-            <li><strong>1946</strong> – Nasce em Stone Town</li>  
-            <li><strong>1970</strong> – Forma a banda Queen</li>     
-            <li><strong>1985</strong> – Live Aid</li>  
-            <li><strong>1991</strong> – Falece em Londres</li>  
-        </ul>  
-    </div>
+                  
+                <div id="estrela-musica-container" class="text-center my-4">  
+                    <div id="estrela-musica" title="Clique para ouvir Freddie!">⭐</div>  
+                </div>  
 
-    <!-- Caixa de curiosidades -->
-    <div class="caixa-curiosidades">
-  <h3>Curiosidades sobre Freddie</h3>
-  <ul>
-    <li>•Podia atingir notas altíssimas com sua voz única.</li>
-    <li>•Era conhecido por sua presença de palco extravagante e energética.</li>
-    <li>•Adorava desenhar e criar figurinos ousados para os shows.</li>
-    <li>•Amava gatos e tinha vários, inclusive eles aparecem em fotos famosas.</li>
-    <li>•Se vestia de forma teatral e usava maquiagem para performances.</li>
-    <li>•Compositou músicas icônicas, como "Bohemian Rhapsody", em sua própria casa.</li>
-    <li>•Era fluente em inglês e persa (sua língua materna).</li>
-  </ul>
-    </div>
+                  
+                <audio id="musica-freddie" src="áudio/música.mp3"></audio>  
 
-                    </section>
-                    <section id="citacao" class="my-5 text-center acessivel citacao-estrela">  
-                        <blockquote class="fst-italic fs-4">  
-                            "I won't be a rock star. I will be a legend." — Freddie Mercury  
-                        </blockquote>  
-                    </section>
+                <div class="video-freddie mt-3">  
+                    <h3>Assista um show icônico:</h3>  
+                    <iframe width="560" height="315"   
+                        src="https://www.youtube.com/embed/fJ9rUzIMcZQ"   
+                        title="Queen – Bohemian Rhapsody Live Aid"   
+                        frameborder="0" allowfullscreen>  
+                    </iframe>  
+                </div>  
+            </div>  
+        </div>  
+    </section>  
 
-                    
-                    <div id="estrela-musica-container" class="text-center my-4">
-                        <div id="estrela-musica" title="Clique para ouvir Freddie!">⭐</div>
-                    </div>
+    <section id="galeria" tabindex="0" aria-label="Seção de galeria de imagens">  
+        <h2 class="text-center pt-5">Galeria</h2>  
+        <div class="container p-3 mt-3 fundo-galeria">  
+            <div class="row justify-content-md-center">  
+                <div class="col-md-4 text-center imagem-container">  
+                    <img src="img/imagem1FM.png" class="img-fluid rounded-5" loading="lazy">  
+                    <div class="particles">  
+                        <span>⭐</span>  
+                        <span>🎵</span>  
+                        <span>✨</span>  
+                        <span>🎶</span>  
+                    </div>  
+                    <figcaption>Freddie Mercury, o icônico vocalista da banda Queen, se apresenta em 1975, mostrando sua energia e presença de palco.</figcaption>  
+                </div>  
+                <div class="col-md-4 text-center imagem-container">  
+                    <img src="img/img2.png" class="img-fluid rounded-5" loading="lazy">  
+                    <div class="particles">  
+                        <span>⭐</span>  
+                        <span>🎵</span>  
+                        <span>✨</span>  
+                        <span>🎶</span>  
+                    </div>  
+                    <figcaption>O líder da banda Queen em 1977, vestido com seu figurino característico, durante um show memorável.</figcaption>  
+                </div>  
+            </div>  
+            <div class="row mt-4 justify-content-md-center">  
+                <div class="col-md-4 text-center imagem-container">  
+                    <img src="img/imgFM3.png" class="img-fluid rounded-5" loading="lazy">  
+                    <div class="particles">  
+                        <span>⭐</span>  
+                        <span>🎵</span>  
+                        <span>✨</span>  
+                        <span>🎶</span>  
+                    </div>  
+                    <figcaption>Freddie Mercury em 1980, capturado enquanto canta e interage com os integrantes da banda no palco, mostrando seu talento único.</figcaption>  
+                </div>  
+                <div class="col-md-4 text-center imagem-container">  
+                    <img src="img/imgFM4.png" class="img-fluid rounded-5" loading="lazy">  
+                    <div class="particles">  
+                        <span>⭐</span>  
+                        <span>🎵</span>  
+                        <span>✨</span>  
+                        <span>🎶</span>  
+                    </div>  
+                    <figcaption>O icônico vocalista do Queen em 1985, durante uma apresentação intensa e cheia de emoção, deixando sua marca na história da música.</figcaption>  
+                </div>  
+            </div>  
+        </div>  
+    </section>  
 
-                    
-                    <audio id="musica-freddie" src="áudio/música.mp3"></audio>
+    <section id="contato">  
+        <div class="container p-5 d-flex justify-content-center">  
+            <div class="col-md-8 col-lg-10 rounded-5 formulario">  
+                <h2 class="mb-3">Entre em contato</h2>  
+                <form>  
+                    <div class="form-group mb-3">  
+                        <label for="nome">Nome</label>  
+                        <input type="text" id="nome" name="nome" class="form-control rounded-3 mt-1" placeholder="Digite seu nome completo">  
+                    </div>  
+                    <div class="form-group mb-3">  
+                        <label for="email">Email</label>  
+                        <input type="email" id="email" name="email" class="form-control rounded-3 mt-1" placeholder="Digite seu email">  
+                    </div>  
+                    <div class="form-group mb-3">  
+                        <label for="mensagem">Mensagem</label>  
+                        <textarea id="mensagem" name="mensagem" class="form-control rounded-4 mt-2" rows="4" placeholder="Escreva sua mensagem"></textarea>  
+                    </div>  
+                    <div class="d-grid gap-2">  
+                        <button type="submit" class="btn btn-primary btn-lg rounded-pill">Enviar mensagem</button>  
+                    </div>  
+                </form>  
+            </div>  
+        </div>  
+    </section>  
+</main>  
 
-                    <div class="video-freddie mt-3">
-                        <h3>Assista um show icônico:</h3>
-                        <iframe width="560" height="315" 
-                            src="https://www.youtube.com/embed/fJ9rUzIMcZQ" 
-                            title="Queen – Bohemian Rhapsody Live Aid" 
-                            frameborder="0" allowfullscreen>
-                        </iframe>
-                    </div>
-                </div>
-            </div>
-        </section>
+<footer class="text-center p-3 fst-italic">  
+    <p>Acesse nossas redes:</p>  
+    <i class="bi bi-whatsapp"></i>  
+    <i class="bi bi-instagram"></i>  
+    <i class="bi bi-tiktok"></i>  
+    <p class="mt-3">  
+        Referências:  
+        <a href="https://pt.wikipedia.org/wiki/Freddie_Mercury" target="_blank">Wikipedia</a> |   
+        <a href="https://www.youtube.com/watch?v=fJ9rUzIMcZQ" target="_blank">Bohemian Rhapsody Live Aid</a>  
+    </p>  
+    <p class="mt-2">Desenvolvido pelo site do Alura. Projeto fictício sem fins comerciais.</p>  
+</footer>  
 
-        <section id="galeria" tabindex="0" aria-label="Seção de galeria de imagens">
-            <h2 class="text-center pt-5">Galeria</h2>
-            <div class="container p-3 mt-3 fundo-galeria">
-                <div class="row justify-content-md-center">
-                    <div class="col-md-4 text-center imagem-container">
-                        <img src="img/imagem1FM.png" class="img-fluid rounded-5" loading="lazy">
-                        <div class="particles">
-                            <span>⭐</span>
-                            <span>🎵</span>
-                            <span>✨</span>
-                            <span>🎶</span>
-                        </div>
-                        <figcaption>Freddie Mercury, o icônico vocalista da banda Queen, se apresenta em 1975, mostrando sua energia e presença de palco.</figcaption>
-                    </div>
-                    <div class="col-md-4 text-center imagem-container">
-                        <img src="img/img2.png" class="img-fluid rounded-5" loading="lazy">
-                        <div class="particles">
-                            <span>⭐</span>
-                            <span>🎵</span>
-                            <span>✨</span>
-                            <span>🎶</span>
-                        </div>
-                        <figcaption>O líder da banda Queen em 1977, vestido com seu figurino característico, durante um show memorável.</figcaption>
-                    </div>
-                </div>
-                <div class="row mt-4 justify-content-md-center">
-                    <div class="col-md-4 text-center imagem-container">
-                        <img src="img/imgFM3.png" class="img-fluid rounded-5" loading="lazy">
-                        <div class="particles">
-                            <span>⭐</span>
-                            <span>🎵</span>
-                            <span>✨</span>
-                            <span>🎶</span>
-                        </div>
-                        <figcaption>Freddie Mercury em 1980, capturado enquanto canta e interage com os integrantes da banda no palco, mostrando seu talento único.</figcaption>
-                    </div>
-                    <div class="col-md-4 text-center imagem-container">
-                        <img src="img/imgFM4.png" class="img-fluid rounded-5" loading="lazy">
-                        <div class="particles">
-                            <span>⭐</span>
-                            <span>🎵</span>
-                            <span>✨</span>
-                            <span>🎶</span>
-                        </div>
-                        <figcaption>O icônico vocalista do Queen em 1985, durante uma apresentação intensa e cheia de emoção, deixando sua marca na história da música.</figcaption>
-                    </div>
-                </div>
-            </div>
-        </section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.js"></script>  
+<script src="script.js"></script>
 
-        <section id="contato">
-            <div class="container p-5 d-flex justify-content-center">
-                <div class="col-md-8 col-lg-10 rounded-5 formulario">
-                    <h2 class="mb-3">Entre em contato</h2>
-                    <form>
-                        <div class="form-group mb-3">
-                            <label for="nome">Nome</label>
-                            <input type="text" id="nome" name="nome" class="form-control rounded-3 mt-1" placeholder="Digite seu nome completo">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" class="form-control rounded-3 mt-1" placeholder="Digite seu email">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="mensagem">Mensagem</label>
-                            <textarea id="mensagem" name="mensagem" class="form-control rounded-4 mt-2" rows="4" placeholder="Escreva sua mensagem"></textarea>
-                        </div>
-                        <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary btn-lg rounded-pill">Enviar mensagem</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="text-center p-3 fst-italic">
-        <p>Acesse nossas redes:</p>
-        <i class="bi bi-whatsapp"></i>
-        <i class="bi bi-instagram"></i>
-        <i class="bi bi-tiktok"></i>
-        <p class="mt-3">
-            Referências:
-            <a href="https://pt.wikipedia.org/wiki/Freddie_Mercury" target="_blank">Wikipedia</a> | 
-            <a href="https://www.youtube.com/watch?v=fJ9rUzIMcZQ" target="_blank">Bohemian Rhapsody Live Aid</a>
-        </p>
-        <p class="mt-2">Desenvolvido pelo site do Alura. Projeto fictício sem fins comerciais.</p>
-    </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.js"></script>
-    <script src="script.js"></script>
-</body>
-</html>
+</body>  
+        </html>
