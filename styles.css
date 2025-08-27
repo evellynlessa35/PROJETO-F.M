@@ -1,8 +1,7 @@
-<!-- Evellyn Lessa 2E 13/08 -->
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+<!-- Evellyn Lessa 2E 13/08 -->  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
 html {
-  scroll-behavior: smooth;
+scroll-behavior: smooth;
 }
 :root {
 --vinho-escuro: #4a0606;
@@ -108,16 +107,16 @@ margin-bottom: 2rem;
 }
 
 .destaque-citacao {
-    background-color: var(--alto-contraste-fundo);
-    color: var(--alto-contraste-texto);
-    border-left: 5px solid var(--alto-contraste-link);
-    padding: 2rem;
-    border-radius: 10px;
-    font-family: 'Georgia', serif;
-    font-size: 1.5rem;
-    max-width: 800px;
-    margin: 0 auto;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+background-color: var(--alto-contraste-fundo);
+color: var(--alto-contraste-texto);
+border-left: 5px solid var(--alto-contraste-link);
+padding: 2rem;
+border-radius: 10px;
+font-family: 'Georgia', serif;
+font-size: 1.5rem;
+max-width: 800px;
+margin: 0 auto;
+box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .video-freddie h3 {
@@ -252,7 +251,7 @@ display: inline-block;
 padding: 2rem 3rem;
 font-family: 'Georgia', serif;
 font-size: 1.5rem;
-(color: var(--alto-contraste-texto);
+color: var(--vinho-escuro);
 text-align: center;
 margin: 2rem auto;
 }
@@ -408,43 +407,4 @@ box-shadow: 0 0 20px rgba(255,215,0,1), 0 0 30px rgba(255,223,0,0.7);
 100% { transform: scale(1); box-shadow: 0 0 10px rgba(255,165,0,0.8); }
 }
 
-.caixa-curiosidades {
-  position: relative;
-  background-color: #ffe8d1;
-  border-radius: 15px;
-  padding: 2rem;
-  margin: 2rem 0;
-  box-shadow: 0 8px 15px rgba(0,0,0,0.3);
-  overflow: hidden;
-}
-
-.caixa-curiosidades h3 {
-  font-family: 'Lemon', cursive;
-  font-size: 1.8rem;
-  color: var(--vinho-escuro);
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-.caixa-curiosidades p {
-  font-family: 'Dancing Script', cursive;
-  font-size: 1.1rem;
-  color: var(--vinho-escuro);
-  text-align: center;
-}
-
-.caixa-curiosidades::before {
-  content: "";
-  position: absolute;
-  top: -10px; left: -10px; right: -10px; bottom: -10px;
-  border-radius: 20px;
-  pointer-events: none;
-  background: radial-gradient(circle, rgba(255,255,255,0.9) 2%, transparent 2%) repeat;
-  background-size: 10px 10px;
-  animation: glitter 3s linear infinite;
-}
-
-@keyframes glitter {
-  0% {transform: rotate(0deg);}
-  100% {transform: rotate(360deg);}
-}
+  
