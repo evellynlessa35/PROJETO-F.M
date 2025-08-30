@@ -1,4 +1,5 @@
-<!-- Evellyn Lessa 2E 13/08 -->  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+<!-- Evellyn Lessa 2E 13/08 --> 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
 html {
 scroll-behavior: smooth;
@@ -462,95 +463,121 @@ box-shadow: 0 0 20px rgba(255,215,0,1), 0 0 30px rgba(255,223,0,0.7);
 
 
 
-/* Caixa geral */
-.linha-container, .caixa-curiosidades {
-  background: #ffe8d1;
+
+.linha-do-tempo-e-curiosidades {
+  display: flex;
+  flex-wrap: nowrap; 
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+
+.linha-container {
+  background-color: #fef6e4; 
   border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  padding: 2rem;
+  flex: 1;
+  min-width: 300px;
   position: relative;
 }
 
-/* Linha do tempo */
+
 .linha-do-tempo {
   list-style: none;
   padding-left: 0;
   font-family: 'Georgia', serif;
   font-size: 1.1rem;
   line-height: 2;
-  position: relative;
+  border-left: 3px solid #4a0606;
+  padding-left: 1.5rem;
 }
 
 .linha-do-tempo li {
   margin: 1rem 0;
-  padding-left: 2rem;
   position: relative;
-  border-left: 3px solid #4a0606;
 }
 
 .linha-do-tempo li::before {
   content: '';
   position: absolute;
-  left: -7px;
+  left: -10px;
   top: 0.5rem;
   width: 14px;
   height: 14px;
-  background-color: #f5d67b;
+  background-color: #4a0606;
   border-radius: 50%;
-  border: 2px solid #4a0606;
+  border: 2px solid #000;
 }
 
-/* Caixa de curiosidades */
+.linha-do-tempo li strong {
+  color: #4a0606;
+}
+
+
+.caixa-curiosidades {
+  background-color: #fff4d1;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  padding: 2rem;
+  flex: 1;
+  min-width: 300px;
+  position: relative;
+}
+
+
 .caixa-curiosidades h3 {
   font-family: 'Lemon', cursive;
-  color: #4a0606;
+  font-size: 1.5rem;
   margin-bottom: 1rem;
+  color: #4a0606;
 }
 
 .caixa-curiosidades ul {
-  padding-left: 1.2rem;
+  list-style: disc inside;
+  font-family: 'Georgia', serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
 }
 
-/* Símbolos flutuando */
+
 .symbols span {
   position: absolute;
-  font-size: 1.5rem;
-  opacity: 0.6;
-  animation: float-symbols 6s linear infinite;
+  font-size: 1.2rem;
+  color: #ffb800;
+  animation: floatSymbols 6s linear infinite;
+  pointer-events: none;
 }
 
-.symbols-linha span {
-  top: calc(10% + 50px * var(--i));
-  left: calc(10% + 50px * var(--i));
+
+.symbols span:nth-child(1) { top: -10px; left: 10%; animation-delay: 0s; }
+.symbols span:nth-child(2) { top: 50%; left: -5%; animation-delay: 1s; }
+.symbols span:nth-child(3) { bottom: -10px; left: 30%; animation-delay: 2s; }
+.symbols span:nth-child(4) { top: 20%; right: -5%; animation-delay: 3s; }
+.symbols span:nth-child(5) { bottom: 10%; right: 10%; animation-delay: 4s; }
+
+@keyframes floatSymbols {
+  0%   { transform: translate(0, 0) rotate(0deg); opacity: 0.6; }
+  25%  { transform: translate(10px, -15px) rotate(45deg); opacity: 0.9; }
+  50%  { transform: translate(-10px, -30px) rotate(90deg); opacity: 0.7; }
+  75%  { transform: translate(5px, -45px) rotate(135deg); opacity: 0.9; }
+  100% { transform: translate(0, -60px) rotate(180deg); opacity: 0.6; }
 }
 
-.symbols-curiosidades span {
-  top: calc(20% + 40px * var(--i));
-  left: calc(20% + 40px * var(--i));
-}
 
-.symbols span:nth-child(1) { --i: 1; }
-.symbols span:nth-child(2) { --i: 2; }
-.symbols span:nth-child(3) { --i: 3; }
-.symbols span:nth-child(4) { --i: 4; }
-.symbols span:nth-child(5) { --i: 5; }
-
-@keyframes float-symbols {
-  0% { transform: translate(0,0) rotate(0deg); }
-  50% { transform: translate(5px,-10px) rotate(180deg); }
-  100% { transform: translate(0,-20px) rotate(360deg); }
-}
-
-/* Alto contraste */
 .alto-contraste .linha-container,
 .alto-contraste .caixa-curiosidades {
   background-color: var(--alto-contraste-fundo);
   color: var(--alto-contraste-texto);
+  border: 2px solid var(--alto-contraste-link);
 }
 
 .alto-contraste .linha-do-tempo li::before {
   background-color: var(--alto-contraste-link);
+  border-color: var(--alto-contraste-texto);
 }
 
 .alto-contraste .caixa-curiosidades h3 {
   color: var(--alto-contraste-link);
-  }
+    }
