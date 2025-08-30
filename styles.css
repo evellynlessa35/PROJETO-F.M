@@ -393,7 +393,7 @@ animation: pulse 1.5s infinite;
 }
 
 #estrela-musica::after {
-content: "♫";
+content: "⭐";
 }
 
 #estrela-musica:hover {
@@ -407,21 +407,41 @@ box-shadow: 0 0 20px rgba(255,215,0,1), 0 0 30px rgba(255,223,0,0.7);
 100% { transform: scale(1); box-shadow: 0 0 10px rgba(255,165,0,0.8); }
 }
 
-  #estrela-hint {
-  color: var(--alto-contraste-texto, #ffffff);
+.musica-container {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.musica-indicacao {
   font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: bold;
-  margin-bottom: 8px;
-  text-shadow: 0 0 4px rgba(0,0,0,0.6);
+  color: #ffffff;
+  background-color: #333333;
+  padding: 8px 15px;
+  border-radius: 25px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
 }
 
-#estrela-musica {
-  font-size: 2rem;
+.musica-botao {
+  font-size: 2.5rem;
+  background-color: #4a0606;
+  color: #f5d67b;
+  padding: 15px;
+  border-radius: 50%;
   cursor: pointer;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-#estrela-musica:hover {
-  transform: scale(1.2);
-  }
+.musica-botao:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4);
+}
