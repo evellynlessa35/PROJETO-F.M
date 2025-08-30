@@ -186,3 +186,46 @@
 
 </body>  
         </html>
+
+
+<button id="btnTopo" onclick="voltarAoTopo()">⬆</button>
+
+<style>
+  #btnTopo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--vinho-escuro, #4a0606);
+    color: #f5d67b; 
+    border: none;
+    padding: 12px 15px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    display: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+    transition: all 0.3s ease;
+  }
+
+  #btnTopo:hover {
+    background-color: #750909;
+    transform: scale(1.1);
+  }
+</style>
+
+<script>
+ 
+  window.onscroll = function() {
+    let botao = document.getElementById("btnTopo");
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+      botao.style.display = "block";
+    } else {
+      botao.style.display = "none";
+    }
+  };
+
+  
+  function voltarAoTopo() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
