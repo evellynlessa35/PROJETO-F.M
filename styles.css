@@ -592,3 +592,14 @@ box-shadow: 0 0 20px rgba(255,215,0,1), 0 0 30px rgba(255,223,0,0.7);
 .caixa-curiosidades {
   flex: 1 1 300px;
                             }
+
+.alto-contraste .citacao-estrela {
+    background-color: var(--alto-contraste-fundo);
+    color: var(--alto-contraste-texto);
+    box-shadow: 3px 3px 10px rgba(255,255,255,0.2);
+}
+
+.alto-contraste .citacao-estrela::before {
+    color: var(--alto-contraste-link);
+    opacity: 0.2;
+}
