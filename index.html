@@ -1,5 +1,4 @@
-
- <!-- Evellyn Lessa 2E 13/08 --> 
+<!-- Evellyn Lessa 2E 13/08 --> 
 <!DOCTYPE html>  <html lang="pt-br">  <head>  
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1">  
@@ -72,12 +71,12 @@
                         "I won't be a rock star. I will be a legend." — Freddie Mercury    
                     </blockquote>    
                 </section>  
-             
-             <div id="musicaContainer">
-  <div id="musicaHint">
 
                   
-             
+                <div id="estrela-musica-container" class="text-center my-4">  
+                    <div id="estrela-musica" title="Clique para ouvir Freddie!">⭐</div>  
+                </div>  
+
                   
                 <audio id="musica-freddie" src="áudio/música.mp3"></audio>  
 
@@ -186,50 +185,51 @@
 <script src="script.js"></script>
 
 </body>  
-        </html>
+             </html>
+             <
 
+ 
+  <button id="btnTopo" onclick="voltarAoTopo()">Voltar ao topo</button>
 
-
-<button id="btnTopo" onclick="voltarAoTopo()">Voltar ao topo</button>
-
-<style>
-  #btnTopo {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%); 
-    background-color: var(--vinho-escuro, #4a0606); 
-    color: #f5d67b;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 25px;
-    font-size: 16px;
-    font-family: 'Montserrat', sans-serif; 
-    cursor: pointer;
-    display: none; 
-    box-shadow: 0 4px 6px rgba(0,0,0,0.4);
-    transition: all 0.3s ease;
-  }
-
-  #btnTopo:hover {
-    background-color: #750909; 
-    transform: translateX(-50%) scale(1.05); 
-  }
-</style>
-
-<script>
-  
-  window.onscroll = function() {
-    let botao = document.getElementById("btnTopo");
-    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-      botao.style.display = "block";
-    } else {
-      botao.style.display = "none";
+  <style>
+    #btnTopo {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--vinho-escuro, #4a0606);
+      color: #f5d67b;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 25px;
+      font-size: 16px;
+      font-family: 'Montserrat', sans-serif;
+      cursor: pointer;
+      display: none;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+      transition: all 0.3s ease;
+      z-index: 1000;
     }
-  };
 
-  
-  function voltarAoTopo() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-</script>
+    #btnTopo:hover {
+      background-color: #750909;
+      transform: translateX(-50%) scale(1.05);
+    }
+  </style>
+
+  <script>
+    window.onscroll = function() {
+      const botao = document.getElementById("btnTopo");
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        botao.style.display = "block";
+      } else {
+        botao.style.display = "none";
+      }
+    };
+
+    function voltarAoTopo() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+
+             </body>
