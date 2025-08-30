@@ -581,3 +581,7 @@ box-shadow: 0 0 20px rgba(255,215,0,1), 0 0 30px rgba(255,223,0,0.7);
 .alto-contraste .caixa-curiosidades h3 {
   color: var(--alto-contraste-link);
     }
+.linha-container,
+.caixa-curiosidades {
+  flex: 1 1 300px;
+                            }
