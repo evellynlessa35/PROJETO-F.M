@@ -603,3 +603,50 @@ box-shadow: 0 0 20px rgba(255,215,0,1), 0 0 30px rgba(255,223,0,0.7);
     color: var(--alto-contraste-link);
     opacity: 0.2;
 }
+
+
+  <!-- Botão voltar ao topo -->
+  <button id="btnTopo" onclick="voltarAoTopo()">Voltar ao topo</button>
+
+  <style>
+    #btnTopo {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--vinho-escuro, #4a0606);
+      color: #f5d67b;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 25px;
+      font-size: 16px;
+      font-family: 'Montserrat', sans-serif;
+      cursor: pointer;
+      display: none;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    #btnTopo:hover {
+      background-color: #750909;
+      transform: translateX(-50%) scale(1.05);
+    }
+  </style>
+
+  <script>
+    window.onscroll = function() {
+      const botao = document.getElementById("btnTopo");
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        botao.style.display = "block";
+      } else {
+        botao.style.display = "none";
+      }
+    };
+
+    function voltarAoTopo() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+
+  </body>
