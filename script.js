@@ -6,26 +6,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (botaoDeAcessibilidade && opcoesDeAcessibilidade) {
         botaoDeAcessibilidade.addEventListener('click', function() {
+        
             botaoDeAcessibilidade.classList.toggle('rotacao-botao');
-            opcoesDeAcessibilidade.classList.toggle('apresenta-lista');
+        
+            opcoesDeAcessibilidade.classList.toggle('ativa');
 
+        
             const botaoSelecionado = botaoDeAcessibilidade.getAttribute('aria-expanded') === 'true';
             botaoDeAcessibilidade.setAttribute('aria-expanded', !botaoSelecionado);
         });
     }
 
+    
     const aumentaFonteBotao = document.getElementById('aumentar-fonte');
     const diminuiFonteBotao = document.getElementById('diminuir-fonte');
-    const alternaContraste = document.getElementById('alterna-contraste');
 
     let tamanhoAtualFonte = 1;
 
     function ajustarFonte() {
-        document.querySelectorAll(
-            "p, h1, h2, h3, h4, h5, h6, li, blockquote, a, span, figcaption, .linha-container, .caixa-curiosidades, .citacao-estrela"
-        ).forEach(el => {
-            el.style.fontSize = `${tamanhoAtualFonte}rem`;
-        });
+        document.querySelectorAll("p, h1, h2, h3, h4, h5, h6, li, blockquote, a, span, figcaption")
+            .forEach(el => {
+                el.style.fontSize = `${tamanhoAtualFonte}rem`;
+            });
     }
 
     if (aumentaFonteBotao) {
@@ -42,17 +44,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+
+    const alternaContraste = document.getElementById('alterna-contraste');
     if (alternaContraste) {
         alternaContraste.addEventListener('click', function() {
             document.body.classList.toggle('alto-contraste');
         });
     }
 
-    ScrollReveal().reveal('#inicio', { delay: 500 });
-    ScrollReveal().reveal('#FreddieMercury', { delay: 500 });
-    ScrollReveal().reveal('#galeria', { delay: 500 });
-    ScrollReveal().reveal('#contato', { delay: 500 });
 
+    if (typeof ScrollReveal !== 'undefined') {
+        ScrollReveal().reveal('#inicio', { delay: 500 });
+        ScrollReveal().reveal('#FreddieMercury', { delay: 500 });
+        ScrollReveal().reveal('#galeria', { delay: 500 });
+        ScrollReveal().reveal('#contato', { delay: 500 });
+    }
     const estrela = document.getElementById('estrela-musica');
     const musica = document.getElementById('musica-freddie');
 
@@ -71,7 +77,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.imagem-container').forEach(container => {
         const emojis = ['⭐','🎵','✨','🎶'];
         const numEmojis = 5;
-
         const { width, height } = container.getBoundingClientRect();
 
         for (let i = 0; i < numEmojis; i++) {
