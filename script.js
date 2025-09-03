@@ -1,4 +1,4 @@
-<!-- Evellyn Lessa 2E 13/08 -->
+// <!-- Evellyn Lessa 2E 13/08 -->
 document.addEventListener('DOMContentLoaded', function() {
 
     const botaoDeAcessibilidade = document.getElementById('botao-acessibilidade');
@@ -14,24 +14,31 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    
     const aumentaFonteBotao = document.getElementById('aumentar-fonte');
     const diminuiFonteBotao = document.getElementById('diminuir-fonte');
     const alternaContraste = document.getElementById('alterna-contraste');
 
     let tamanhoAtualFonte = 1;
 
+
+    function ajustarFonte() {
+        document.querySelectorAll("p, h1, h2, h3, h4, h5, h6, li, blockquote, a, span")
+            .forEach(el => {
+                el.style.fontSize = `${tamanhoAtualFonte}rem`;
+            });
+    }
+
     if (aumentaFonteBotao) {
         aumentaFonteBotao.addEventListener('click', function() {
             tamanhoAtualFonte += 0.1;
-            document.body.style.fontSize = `${tamanhoAtualFonte}rem`;
+            ajustarFonte();
         });
     }
 
     if (diminuiFonteBotao) {
         diminuiFonteBotao.addEventListener('click', function() {
             tamanhoAtualFonte -= 0.1;
-            document.body.style.fontSize = `${tamanhoAtualFonte}rem`;
+            ajustarFonte();
         });
     }
 
@@ -41,13 +48,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    
     ScrollReveal().reveal('#inicio', { delay: 500 });
     ScrollReveal().reveal('#FreddieMercury', { delay: 500 });
     ScrollReveal().reveal('#galeria', { delay: 500 });
     ScrollReveal().reveal('#contato', { delay: 500 });
 
-    
     const estrela = document.getElementById('estrela-musica');
     const musica = document.getElementById('musica-freddie');
 
@@ -63,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    
     document.querySelectorAll('.imagem-container').forEach(container => {
         const emojis = ['⭐','🎵','✨','🎶'];
         const numEmojis = 5;
