@@ -21,10 +21,11 @@ document.addEventListener('DOMContentLoaded', function() {
     let tamanhoAtualFonte = 1;
 
     function ajustarFonte() {
-        document.querySelectorAll("p, h1, h2, h3, h4, h5, h6, li, blockquote, a, span")
-            .forEach(el => {
-                el.style.fontSize = `${tamanhoAtualFonte}rem`;
-            });
+        document.querySelectorAll(
+            "p, h1, h2, h3, h4, h5, h6, li, blockquote, a, span, figcaption, .linha-container, .caixa-curiosidades, .citacao-estrela"
+        ).forEach(el => {
+            el.style.fontSize = `${tamanhoAtualFonte}rem`;
+        });
     }
 
     if (aumentaFonteBotao) {
@@ -46,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.classList.toggle('alto-contraste');
         });
     }
-    
+
     ScrollReveal().reveal('#inicio', { delay: 500 });
     ScrollReveal().reveal('#FreddieMercury', { delay: 500 });
     ScrollReveal().reveal('#galeria', { delay: 500 });
